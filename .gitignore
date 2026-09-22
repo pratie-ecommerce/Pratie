@@ -31,4 +31,8 @@ Thumbs.db
 .vercel
 *.tsbuildinfo
 
+# Documentation
+doc/
+
+
 
