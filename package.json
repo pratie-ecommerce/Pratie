@@ -1,0 +1,19 @@
+{
+  "name": "pratie-monorepo",
+  "version": "1.0.0",
+  "description": "Pratie Luxury Contemporary E-Commerce Platform",
+  "scripts": {
+    "dev:backend": "npm --prefix pratie-backend run dev",
+    "dev:frontend": "npm --prefix pratie-frontend run dev",
+    "dev:dashboard": "npm --prefix pratie-dashboard run dev",
+    "build:all": "npm --prefix pratie-backend run build && npm --prefix pratie-frontend run build && npm --prefix pratie-dashboard run build",
+    "build:backend": "npm --prefix pratie-backend run build",
+    "build:frontend": "npm --prefix pratie-frontend run build",
+    "build:dashboard": "npm --prefix pratie-dashboard run build",
+    "deploy:frontend": "vercel --cwd pratie-frontend",
+    "deploy:dashboard": "vercel --cwd pratie-dashboard",
+    "deploy:backend": "vercel --cwd pratie-backend",
+    "install:all": "npm --prefix pratie-backend install && npm --prefix pratie-frontend install && npm --prefix pratie-dashboard install",
+    "test:backend": "npm --prefix pratie-backend test"
+  }
+}

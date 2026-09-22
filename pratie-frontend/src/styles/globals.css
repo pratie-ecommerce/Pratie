@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Marcellus', 'Prata', serif;
+    --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    
+    /* Indian Ethnic E-Commerce Festive Colors */
+    --color-rani-pink: #db2777;
+    --color-marigold: #d97706;
+    --color-peacock-blue: #0284c7;
+    --color-emerald: #059669;
+    --color-royal-purple: #7c3aed;
+    --color-vermilion: #e11d48;
+  }
+
+  ::selection {
+    background: #f43f5e;
+    color: #ffffff;
+  }
+
+  body {
+    background-color: #faf8f5;
+    color: #0f172a;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, .font-heading {
+    font-family: var(--font-heading);
+    letter-spacing: 0.02em;
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+}
+
+/* Modern E-Commerce Card Utilities */
+.ecom-card {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.04);
+}
+
+.ecom-card:hover {
+  border-color: #fbcfe8;
+  box-shadow: 0 16px 30px -6px rgba(219, 39, 119, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Category Story Circles with Vibrant Indian Borders */
+.story-circle {
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #db2777, #f59e0b, #0d9488);
+  transition: transform 0.3s ease;
+}
+
+.story-circle:hover {
+  transform: scale(1.06);
+}
+
+/* Modern Transparent Brand Logo */
+.brand-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+.brand-logo-wrap:hover {
+  transform: scale(1.02);
+}
+
+.brand-logo-img {
+  object-fit: contain;
+  filter: drop-shadow(0 1px 3px rgba(180, 83, 9, 0.18));
+  transition: filter 0.25s ease;
+}
+
+.brand-logo-wrap:hover .brand-logo-img {
+  filter: drop-shadow(0 3px 8px rgba(180, 83, 9, 0.3));
+}
+
+/* Vibrant Regional Craft Gradients */
+.gradient-north {
+  background: linear-gradient(135deg, #ea580c 0%, #e11d48 100%);
+}
+
+.gradient-south {
+  background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+}
+
+.gradient-east {
+  background: linear-gradient(135deg, #e11d48 0%, #db2777 100%);
+}
+
+.gradient-west {
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+}
+
+.gradient-central {
+  background: linear-gradient(135deg, #9333ea 0%, #d97706 100%);
+}
+
+.gradient-northeast {
+  background: linear-gradient(135deg, #d97706 0%, #0891b2 100%);
+}
+
+.gradient-festive {
+  background: linear-gradient(135deg, #db2777 0%, #e11d48 35%, #d97706 70%, #7c3aed 100%);
+}
+
+/* Text Gradients */
+.text-gradient-festive {
+  background: linear-gradient(135deg, #be185d 0%, #e11d48 35%, #b45309 70%, #6d28d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Badges */
+.badge-discount {
+  background: #e11d48;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 3px 7px;
+  border-radius: 6px;
+}
+
+/* Clean Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #fb7185;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e11d48;
+}

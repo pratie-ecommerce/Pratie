@@ -1,0 +1,2827 @@
+import { Product, Coupon, Order, CartItem, User, Review } from '../types/index.js';
+
+class DataStore {
+  public users: User[] = [
+    {
+      id: 'u0000001-0000-0000-0000-000000000001',
+      email: 'admin@pratie.com',
+      passwordHash: '$2a$10$95j6P.JvH77/7W233p0R9eM0y5w0nN2K5gRk7V9XyM6O3kU1Q/8WW',
+      fullName: 'Aarav Singhania',
+      role: 'admin',
+      phone: '+91 9876543210',
+      isActive: true,
+      emailVerified: true,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    },
+    {
+      id: 'u0000001-0000-0000-0000-000000000002',
+      email: 'customer@pratie.com',
+      passwordHash: '$2a$10$95j6P.JvH77/7W233p0R9eM0y5w0nN2K5gRk7V9XyM6O3kU1Q/8WW',
+      fullName: 'Meera Kapoor',
+      role: 'customer',
+      phone: '+91 9123456780',
+      isActive: true,
+      emailVerified: true,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    }
+  ];
+
+  public products: Product[] = [
+    {
+      id: 'p0000001-0000-0000-0000-000000000001',
+      title: 'Mithila Handpainted Tussar Silk Saree',
+      slug: 'mithila-handpainted-tussar-silk-saree',
+      skuPrefix: 'PRT-MTH-SAR-01',
+      shortDescription: 'Pure Bhagalpuri Tussar silk saree adorned with intricate Madhubani folklore motifs handpainted by master Mithila artisans.',
+      description: 'A wearable mythological tapestry. Handpainted by master women artisans in the Mithila region of Bihar using fine bamboo nibs, organic vegetable dyes, and soot ink on unbleached handspun Tussar silk. Features an elaborate Kohbar celestial pallu and floral zardozi border.',
+      categoryId: 'c0000001-0000-0000-0000-000000000001',
+      categoryName: 'Mithila Couture',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Bihar',
+      clothingType: 'Saree',
+      craftTechnique: 'Mithila / Madhubani Handpainted',
+      fabric: '100% Handspun Bhagalpuri Tussar Silk',
+      basePricePaise: 2899900,
+      compareAtPricePaise: 3399900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 4.98,
+      ratingCount: 42,
+      tags: ['mithila', 'madhubani', 'saree', 'bihar', 'tussar-silk', 'handpainted'],
+      material: '100% Handspun Bhagalpuri Tussar Silk; Natural Vegetable Dyes & Zari Accents',
+      careInstructions: 'Dry clean only by certified luxury heritage garment specialists',
+      media: [
+        {
+          id: 'm1',
+          productId: 'p0000001-0000-0000-0000-000000000001',
+          imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Mithila Handpainted Tussar Silk Saree Draped Pallu',
+          displayOrder: 1,
+          isPrimary: true
+        },
+        {
+          id: 'm2',
+          productId: 'p0000001-0000-0000-0000-000000000001',
+          imageUrl: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Mithila Handpainted Details and Fine Line Work',
+          displayOrder: 2,
+          isPrimary: false
+        }
+      ],
+      variants: [
+        {
+          id: 'v1',
+          productId: 'p0000001-0000-0000-0000-000000000001',
+          sku: 'PRT-MTH-SAR-01-STD',
+          size: 'Standard (6.5m with Blouse Piece)',
+          colorName: 'Raw Silk Ivory & Vermillion Madder',
+          colorHex: '#f3ede2',
+          additionalPricePaise: 0,
+          stockQuantity: 9,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-10T10:00:00Z',
+      updatedAt: '2026-01-10T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000002',
+      title: 'Mithila Madhubani Lotus Tussar Kurta Suit Set',
+      slug: 'mithila-madhubani-lotus-tussar-kurta-suit-set',
+      skuPrefix: 'PRT-MTH-SUT-02',
+      shortDescription: 'Handpainted Madhubani lotus yoke kurta on pure Tussar silk paired with tapered trousers and sheer organza dupatta.',
+      description: 'Living art tailored into modern luxury. The yoke features hand-illustrated lotus blossoms and celestial peacocks using organic pigments. Tailored with refined side slits and complemented with a hand-painted sheer dupatta.',
+      categoryId: 'c0000001-0000-0000-0000-000000000001',
+      categoryName: 'Mithila Couture',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Bihar',
+      clothingType: 'Suit',
+      craftTechnique: 'Mithila / Madhubani Handpainted',
+      fabric: 'Pure Bhagalpuri Tussar Silk with Mulberry Silk Trousers',
+      basePricePaise: 2499900,
+      compareAtPricePaise: 2999900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 4.95,
+      ratingCount: 28,
+      tags: ['mithila', 'suit', 'kurta-set', 'bihar', 'madhubani', 'luxury-suit'],
+      material: '100% Handspun Bhagalpuri Tussar Silk with Pure Organza Dupatta',
+      careInstructions: 'Delicate dry clean only',
+      media: [
+        {
+          id: 'm3',
+          productId: 'p0000001-0000-0000-0000-000000000002',
+          imageUrl: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Mithila Madhubani Lotus Silk Kurta Suit Set',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v2',
+          productId: 'p0000001-0000-0000-0000-000000000002',
+          sku: 'PRT-MTH-SUT-02-S',
+          size: 'S (Bust 36")',
+          colorName: 'Raw Silk Ivory / Lotus Indigo',
+          colorHex: '#f3ede2',
+          additionalPricePaise: 0,
+          stockQuantity: 7,
+          isAvailable: true
+        },
+        {
+          id: 'v3',
+          productId: 'p0000001-0000-0000-0000-000000000002',
+          sku: 'PRT-MTH-SUT-02-M',
+          size: 'M (Bust 38")',
+          colorName: 'Raw Silk Ivory / Lotus Indigo',
+          colorHex: '#f3ede2',
+          additionalPricePaise: 0,
+          stockQuantity: 12,
+          isAvailable: true
+        },
+        {
+          id: 'v4',
+          productId: 'p0000001-0000-0000-0000-000000000002',
+          sku: 'PRT-MTH-SUT-02-L',
+          size: 'L (Bust 40")',
+          colorName: 'Raw Silk Ivory / Lotus Indigo',
+          colorHex: '#f3ede2',
+          additionalPricePaise: 0,
+          stockQuantity: 10,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-11T10:00:00Z',
+      updatedAt: '2026-01-11T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000003',
+      title: 'Kashi Royal Kadwa Brocade Katan Silk Saree',
+      slug: 'kashi-royal-kadwa-brocade-katan-silk-saree',
+      skuPrefix: 'PRT-KSH-SAR-03',
+      shortDescription: 'Pure Katan silk handwoven on traditional Banarasi pit looms with authentic gold zari Kadwa floral jaal.',
+      description: 'The pinnacle of Varanasi weaving artistry. The Kadwa technique requires hours of hand-guided shuttling for each individual motif, leaving no loose floating threads on the reverse. Woven with tested gold zari and pure mulberry katan silk.',
+      categoryId: 'c0000001-0000-0000-0000-000000000002',
+      categoryName: 'Banarasi Brocades',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Uttar Pradesh',
+      clothingType: 'Saree',
+      craftTechnique: 'Banarasi Kadwa Brocade',
+      fabric: '100% Pure Katan Silk with Tested Gold Zari',
+      basePricePaise: 4599900,
+      compareAtPricePaise: 5299900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 5.0,
+      ratingCount: 34,
+      tags: ['banarasi', 'kadwa', 'saree', 'uttar-pradesh', 'katan-silk', 'gold-zari'],
+      material: '100% Pure Katan Silk with Tested Gold Zari',
+      careInstructions: 'Store wrapped in mulmul cloth; delicate dry clean only',
+      media: [
+        {
+          id: 'm4',
+          productId: 'p0000001-0000-0000-0000-000000000003',
+          imageUrl: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Kashi Royal Kadwa Brocade Katan Silk Saree',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v5',
+          productId: 'p0000001-0000-0000-0000-000000000003',
+          sku: 'PRT-KSH-SAR-03-NVY',
+          size: 'Standard (6.5m with Blouse Piece)',
+          colorName: 'Royal Midnight Navy & Gold Zari',
+          colorHex: '#0f1a30',
+          additionalPricePaise: 0,
+          stockQuantity: 6,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-12T10:00:00Z',
+      updatedAt: '2026-01-12T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000004',
+      title: 'Lucknowi Chikankari & Mukaish Georgette Anarkali Suit',
+      slug: 'lucknowi-chikankari-mukaish-georgette-anarkali-suit',
+      skuPrefix: 'PRT-LKO-SUT-04',
+      shortDescription: 'Master artisan hand-embroidered 32-stitch Chikankari with pure silver Mukaish embellishments on flowing pure georgette.',
+      description: 'An ode to the Nawabi heritage of Awadh. Handcrafted with intricate Bakhiya, Phanda, and Tepchi shadow stitches by master women artisans in Lucknow, accented with hand-embedded silver Mukaish metal dots.',
+      categoryId: 'c0000001-0000-0000-0000-000000000004',
+      categoryName: 'Royal Heritage Suits',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Uttar Pradesh',
+      clothingType: 'Suit',
+      craftTechnique: 'Lucknowi Chikankari',
+      fabric: 'Pure Viscose Georgette with Pure Organza Dupatta',
+      basePricePaise: 3499900,
+      compareAtPricePaise: 3999900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 4.97,
+      ratingCount: 31,
+      tags: ['chikankari', 'lucknow', 'suit', 'anarkali', 'uttar-pradesh', 'mukaish'],
+      material: 'Pure Viscose Georgette, Silver Mukaish, Pure Cotton Thread',
+      careInstructions: 'Dry clean only',
+      media: [
+        {
+          id: 'm5',
+          productId: 'p0000001-0000-0000-0000-000000000004',
+          imageUrl: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Lucknowi Chikankari & Mukaish Anarkali Suit',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v6',
+          productId: 'p0000001-0000-0000-0000-000000000004',
+          sku: 'PRT-LKO-SUT-04-M',
+          size: 'M (Bust 38")',
+          colorName: 'Pristine Awadh Ivory',
+          colorHex: '#faf8f5',
+          additionalPricePaise: 0,
+          stockQuantity: 8,
+          isAvailable: true
+        },
+        {
+          id: 'v7',
+          productId: 'p0000001-0000-0000-0000-000000000004',
+          sku: 'PRT-LKO-SUT-04-L',
+          size: 'L (Bust 40")',
+          colorName: 'Pristine Awadh Ivory',
+          colorHex: '#faf8f5',
+          additionalPricePaise: 0,
+          stockQuantity: 11,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-13T10:00:00Z',
+      updatedAt: '2026-01-13T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000005',
+      title: 'Chanderi Gold Ashrafi Booti Handloom Silk Saree',
+      slug: 'chanderi-gold-ashrafi-booti-handloom-silk-saree',
+      skuPrefix: 'PRT-CHD-SAR-05',
+      shortDescription: 'Gossamer Chanderi silk-cotton blend saree with hand-woven gold ashrafi bootis and pure zari border.',
+      description: 'Woven in the historic looms of Madhya Pradesh. Featherlight gossamer drape featuring traditional hand-interlocked coin (ashrafi) bootis, sheer elegance, and an unstitched mulberry silk blouse piece.',
+      categoryId: 'c0000001-0000-0000-0000-000000000003',
+      categoryName: 'Chanderi Weaves',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Madhya Pradesh',
+      clothingType: 'Saree',
+      craftTechnique: 'Chanderi Handloom',
+      fabric: 'Gossamer Chanderi Silk-Cotton Blend with Real Zari',
+      basePricePaise: 2699900,
+      compareAtPricePaise: 3099900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: false,
+      ratingAverage: 4.94,
+      ratingCount: 26,
+      tags: ['chanderi', 'saree', 'madhya-pradesh', 'ashrafi', 'gold-booti', 'handloom'],
+      material: '70% Pure Silk, 30% Fine Cotton with Tested Gold Zari',
+      careInstructions: 'Dry clean only. Iron on reverse with medium warmth',
+      media: [
+        {
+          id: 'm6',
+          productId: 'p0000001-0000-0000-0000-000000000005',
+          imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Chanderi Gold Ashrafi Booti Silk Saree',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v8',
+          productId: 'p0000001-0000-0000-0000-000000000005',
+          sku: 'PRT-CHD-SAR-05-EMR',
+          size: 'Standard (6.5m with Blouse Piece)',
+          colorName: 'Royal Emerald Green & Gold',
+          colorHex: '#0f4c3a',
+          additionalPricePaise: 0,
+          stockQuantity: 10,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-14T10:00:00Z',
+      updatedAt: '2026-01-14T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000006',
+      title: 'Chanderi Silk Lotus Blossom Angrakha Anarkali Suit',
+      slug: 'chanderi-silk-lotus-blossom-angrakha-anarkali-suit',
+      skuPrefix: 'PRT-CHD-SUT-06',
+      shortDescription: 'Gossamer Chanderi silk Angrakha flared suit with hand-painted lotus organza veil and gold zari borders.',
+      description: 'Featherlight grace inspired by central Indian royal courts. Designed with overlapping Angrakha side ties, hand-woven ashrafi bootis, and an ethereal translucent lotus veil.',
+      categoryId: 'c0000001-0000-0000-0000-000000000003',
+      categoryName: 'Chanderi Weaves',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Madhya Pradesh',
+      clothingType: 'Suit',
+      craftTechnique: 'Chanderi Handloom',
+      fabric: 'Chanderi Silk-Cotton Blend with Pure Silk Organza Dupatta',
+      basePricePaise: 3299900,
+      compareAtPricePaise: 3699900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: false,
+      ratingAverage: 4.96,
+      ratingCount: 29,
+      tags: ['chanderi', 'angrakha', 'suit', 'madhya-pradesh', 'anarkali', 'lotus'],
+      material: 'Chanderi Silk-Cotton Blend with Pure Silk Organza Dupatta',
+      careInstructions: 'Dry clean only. Iron on reverse low heat setting',
+      media: [
+        {
+          id: 'm7',
+          productId: 'p0000001-0000-0000-0000-000000000006',
+          imageUrl: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Chanderi Silk Lotus Blossom Angrakha Anarkali Suit',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v9',
+          productId: 'p0000001-0000-0000-0000-000000000006',
+          sku: 'PRT-CHD-SUT-06-PCH-M',
+          size: 'M (Bust 38")',
+          colorName: 'Gulab Quartz Pink',
+          colorHex: '#f4c2c2',
+          additionalPricePaise: 0,
+          stockQuantity: 11,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-14T10:00:00Z',
+      updatedAt: '2026-01-14T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000007',
+      title: 'Royal Marwar Gotapatti Handcrafted Kota Doria Saree',
+      slug: 'royal-marwar-gotapatti-handcrafted-kota-doria-saree',
+      skuPrefix: 'PRT-RAJ-SAR-07',
+      shortDescription: 'Pure handwoven Kota Doria silk-cotton checkered saree adorned with authentic Rajasthani Gotapatti floral jaal.',
+      description: 'Crafted in the royal ateliers of Rajasthan. The distinctive khat square weave of Kota is hand-embellished with real gold-finished gota ribbons cut into petals, leaves, and peacocks by generational Marwari artisans.',
+      categoryId: 'c0000001-0000-0000-0000-000000000004',
+      categoryName: 'Royal Heritage Suits',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Rajasthan',
+      clothingType: 'Saree',
+      craftTechnique: 'Rajasthani Gotapatti & Leheriya',
+      fabric: 'Pure Kota Doria Silk with Gota Patti Ribbon Art',
+      basePricePaise: 2199900,
+      compareAtPricePaise: 2599900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 4.92,
+      ratingCount: 19,
+      tags: ['rajasthan', 'gotapatti', 'saree', 'kota-doria', 'marwar', 'handcrafted'],
+      material: 'Pure Handwoven Kota Doria Silk, Tested Gota Patti Ribbons',
+      careInstructions: 'Dry clean only; avoid direct heat on gota ribbons',
+      media: [
+        {
+          id: 'm8',
+          productId: 'p0000001-0000-0000-0000-000000000007',
+          imageUrl: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Royal Marwar Gotapatti Kota Doria Saree',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v10',
+          productId: 'p0000001-0000-0000-0000-000000000007',
+          sku: 'PRT-RAJ-SAR-07-SND',
+          size: 'Standard (6.5m with Blouse Piece)',
+          colorName: 'Sindoori Scarlet & Gold',
+          colorHex: '#c22d2d',
+          additionalPricePaise: 0,
+          stockQuantity: 8,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-15T10:00:00Z',
+      updatedAt: '2026-01-15T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000008',
+      title: 'Jaipuri Leheriya & Bandhani Pure Silk Sharara Suit Set',
+      slug: 'jaipuri-leheriya-bandhani-pure-silk-sharara-suit-set',
+      skuPrefix: 'PRT-RAJ-SUT-08',
+      shortDescription: 'Diagonal tie-dye Leheriya georgette short kurta with flared tiered Bandhani sharara and heavy gota borders.',
+      description: 'Vibrant celebratory elegance from Jaipur. Traditional diagonal wave Leheriya resist dyeing meets intricate hand-knotted Bandhani dots on pure fluid georgette, structured with authentic gota patti scallops.',
+      categoryId: 'c0000001-0000-0000-0000-000000000004',
+      categoryName: 'Royal Heritage Suits',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Rajasthan',
+      clothingType: 'Suit',
+      craftTechnique: 'Rajasthani Gotapatti & Leheriya',
+      fabric: '100% Pure Silk Georgette with Shantoon Silk Lining',
+      basePricePaise: 2749900,
+      compareAtPricePaise: 3199900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 4.93,
+      ratingCount: 22,
+      tags: ['rajasthan', 'leheriya', 'bandhani', 'suit', 'sharara', 'gota-patti'],
+      material: '100% Pure Silk Georgette, Gota Patti Borders',
+      careInstructions: 'Dry clean only',
+      media: [
+        {
+          id: 'm9',
+          productId: 'p0000001-0000-0000-0000-000000000008',
+          imageUrl: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Jaipuri Leheriya & Bandhani Sharara Suit Set',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v11',
+          productId: 'p0000001-0000-0000-0000-000000000008',
+          sku: 'PRT-RAJ-SUT-08-M',
+          size: 'M (Bust 38")',
+          colorName: 'Rani Pink & Sunset Saffron',
+          colorHex: '#e12b74',
+          additionalPricePaise: 0,
+          stockQuantity: 9,
+          isAvailable: true
+        },
+        {
+          id: 'v12',
+          productId: 'p0000001-0000-0000-0000-000000000008',
+          sku: 'PRT-RAJ-SUT-08-L',
+          size: 'L (Bust 40")',
+          colorName: 'Rani Pink & Sunset Saffron',
+          colorHex: '#e12b74',
+          additionalPricePaise: 0,
+          stockQuantity: 7,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-15T10:00:00Z',
+      updatedAt: '2026-01-15T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000009',
+      title: 'Kashmiri Royal Tilla Gold Embroidered Silk Velvet Suit',
+      slug: 'kashmiri-royal-tilla-gold-embroidered-silk-velvet-suit',
+      skuPrefix: 'PRT-KSH-SUT-09',
+      shortDescription: 'Pure micro-velvet silk kurta adorned with authentic gold & silver wire Tilla needlework from the Kashmir Valley.',
+      description: 'An heirloom garment of regal Kashmiri provenance. Handcrafted with fine metallic Tilla threads using traditional wooden stencils and needles in downtown Srinagar. Paired with pure silk trousers and a hand-spun Pashmina shawl.',
+      categoryId: 'c0000001-0000-0000-0000-000000000004',
+      categoryName: 'Royal Heritage Suits',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Jammu & Kashmir',
+      clothingType: 'Suit',
+      craftTechnique: 'Kashmiri Tilla Embroidery',
+      fabric: 'Pure Micro-Velvet Silk with Pure Pashmina Shawl',
+      basePricePaise: 3899900,
+      compareAtPricePaise: 4499900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 5.0,
+      ratingCount: 38,
+      tags: ['kashmir', 'tilla', 'velvet', 'suit', 'pashmina', 'jammu-kashmir'],
+      material: 'Pure Micro-Velvet Silk, Metallic Tilla Thread, 100% Cashmere Pashmina',
+      careInstructions: 'Store in airtight muslin bags; luxury dry clean only',
+      media: [
+        {
+          id: 'm10',
+          productId: 'p0000001-0000-0000-0000-000000000009',
+          imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Kashmiri Royal Tilla Gold Embroidered Velvet Suit',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v13',
+          productId: 'p0000001-0000-0000-0000-000000000009',
+          sku: 'PRT-KSH-SUT-09-PLM-M',
+          size: 'M (Bust 38")',
+          colorName: 'Royal Kashmir Plum & Gold Tilla',
+          colorHex: '#3c1828',
+          additionalPricePaise: 0,
+          stockQuantity: 5,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-16T10:00:00Z',
+      updatedAt: '2026-01-16T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000010',
+      title: 'Kutch 16-Stage Indigo Ajrakh Hand-Block Mulberry Silk Saree',
+      slug: 'kutch-16-stage-indigo-ajrakh-hand-block-mulberry-silk-saree',
+      skuPrefix: 'PRT-AJK-SAR-10',
+      shortDescription: '16-stage natural indigo & madder root resist block-printed Mulberry silk saree crafted in Dhamadka, Kutch.',
+      description: 'Ancient geometric harmony rooted in the Indus Valley civilization. Each textile undergoes a laborious 16-stage resist dyeing process using river water, natural indigo cakes, and pomegranate rinds on lustrous mulberry silk.',
+      categoryId: 'c0000001-0000-0000-0000-000000000001',
+      categoryName: 'Mithila Couture',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Gujarat',
+      clothingType: 'Saree',
+      craftTechnique: 'Kutch Ajrakh & Bandhani',
+      fabric: '100% Pure Mulberry Silk with Natural Indigo & Madder',
+      basePricePaise: 2299900,
+      compareAtPricePaise: 2699900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 4.92,
+      ratingCount: 20,
+      tags: ['gujarat', 'ajrakh', 'kutch', 'saree', 'natural-indigo', 'handblock'],
+      material: '100% Pure Mulberry Silk with Natural Vegetable Dye Infusion',
+      careInstructions: 'Natural indigo may gently bleed on first dry clean; store away from direct sunlight',
+      media: [
+        {
+          id: 'm11',
+          productId: 'p0000001-0000-0000-0000-000000000010',
+          imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Kutch Indigo Ajrakh Mulberry Silk Saree',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v14',
+          productId: 'p0000001-0000-0000-0000-000000000010',
+          sku: 'PRT-AJK-SAR-10-IND',
+          size: 'Standard (6.5m with Blouse Piece)',
+          colorName: 'Deep Kutch Indigo & Madder Red',
+          colorHex: '#1b2d4f',
+          additionalPricePaise: 0,
+          stockQuantity: 10,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-16T10:00:00Z',
+      updatedAt: '2026-01-16T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000011',
+      title: 'Kanjeevaram Korvai Pure Gold Zari Temple Border Silk Saree',
+      slug: 'kanjeevaram-korvai-pure-gold-zari-temple-border-silk-saree',
+      skuPrefix: 'PRT-KNJ-SAR-11',
+      shortDescription: 'Heavy 3-ply pure Mulberry silk handwoven with authentic Korvai interlocking temple border and solid gold zari pallu.',
+      description: 'The crowning jewel of South Indian handloom mastery. Handwoven in Kanchipuram using the intricate Korvai technique where body and contrasting temple borders are interlinked by two master weavers on a single loom.',
+      categoryId: 'c0000001-0000-0000-0000-000000000002',
+      categoryName: 'Banarasi Brocades',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Tamil Nadu',
+      clothingType: 'Saree',
+      craftTechnique: 'Kanjeevaram Temple Zari',
+      fabric: 'Heavy 3-Ply Pure Mulberry Silk with Tested Real Gold Zari',
+      basePricePaise: 5299900,
+      compareAtPricePaise: 5999900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 5.0,
+      ratingCount: 45,
+      tags: ['kanjeevaram', 'saree', 'tamil-nadu', 'temple-border', 'silk-mark', 'gold-zari'],
+      material: '100% Pure Mulberry Silk, Pure Tested Gold & Silver Zari',
+      careInstructions: 'Store in soft pure cotton mulmul saree cover; delicate dry clean only',
+      media: [
+        {
+          id: 'm12',
+          productId: 'p0000001-0000-0000-0000-000000000011',
+          imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Kanjeevaram Korvai Pure Gold Zari Temple Border Saree',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v15',
+          productId: 'p0000001-0000-0000-0000-000000000011',
+          sku: 'PRT-KNJ-SAR-11-MRN',
+          size: 'Standard (6.5m with Blouse Piece)',
+          colorName: 'Temple Crimson Maroon & Antique Gold',
+          colorHex: '#6b1d2f',
+          additionalPricePaise: 0,
+          stockQuantity: 4,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-17T10:00:00Z',
+      updatedAt: '2026-01-17T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000012',
+      title: 'Amritsari Resham Phulkari Needlecraft Silk Festive Suit',
+      slug: 'amritsari-resham-phulkari-needlecraft-silk-festive-suit',
+      skuPrefix: 'PRT-PUN-SUT-12',
+      shortDescription: 'Pure Chanderi silk straight kurta with authentic untwisted silk floss (pat) Phulkari geometric embroidery.',
+      description: 'The vibrant soul of Punjab. Embroidered entirely by hand on the reverse side of fabric creating geometric floral tapestries using lustrous untwisted silk threads, paired with a full heirloom Phulkari dupatta.',
+      categoryId: 'c0000001-0000-0000-0000-000000000004',
+      categoryName: 'Royal Heritage Suits',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Punjab',
+      clothingType: 'Suit',
+      craftTechnique: 'Phulkari Needlecraft',
+      fabric: 'Pure Chanderi Silk with Untwisted Silk Floss Needlework',
+      basePricePaise: 1999900,
+      compareAtPricePaise: 2399900,
+      taxRatePercentage: 18,
+      isFeatured: false,
+      isPublished: true,
+      isNewArrival: true,
+      ratingAverage: 4.88,
+      ratingCount: 16,
+      tags: ['punjab', 'phulkari', 'suit', 'needlecraft', 'festive-suit'],
+      material: 'Pure Chanderi Silk, 100% Untwisted Resham Silk Thread',
+      careInstructions: 'Dry clean only',
+      media: [
+        {
+          id: 'm13',
+          productId: 'p0000001-0000-0000-0000-000000000012',
+          imageUrl: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Amritsari Resham Phulkari Silk Festive Suit',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v16',
+          productId: 'p0000001-0000-0000-0000-000000000012',
+          sku: 'PRT-PUN-SUT-12-MST-M',
+          size: 'M (Bust 38")',
+          colorName: 'Mustard Goldenrod & Multicolored Resham',
+          colorHex: '#d4af37',
+          additionalPricePaise: 0,
+          stockQuantity: 8,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-18T10:00:00Z',
+      updatedAt: '2026-01-18T10:00:00Z'
+    },
+    {
+      id: 'p0000001-0000-0000-0000-000000000013',
+      title: 'Odisha Berhampuri Double-Pata Pure Silk Saree',
+      slug: 'tarakasi-silver-filigree-minaudiere-evening-clutch',
+      skuPrefix: 'PRT-ACC-06',
+      shortDescription: 'Sterling 925 silver gossamer filigree evening box clutch handcrafted by generational master silversmiths in Cuttack.',
+      description: 'An heirloom artifact of Odisha’s 500-year-old Tarakasi tradition. Fine silver wires drawn to the thickness of silk threads are hand-curled into celestial peacocks and floral creepers, accented with Basra seed pearls and silk velvet lining.',
+      categoryId: 'c0000001-0000-0000-0000-000000000005',
+      categoryName: 'Pure Silk Sarees',
+      brandId: 'b0000001-0000-0000-0000-000000000001',
+      brandName: 'Pratiè Atelier',
+      state: 'Odisha',
+      clothingType: 'Saree',
+      craftTechnique: 'Tarakasi Silver Filigree',
+      fabric: 'Hallmarked 92.5 Sterling Silver, Cultured Seed Pearls, Silk Velvet',
+      basePricePaise: 2199900,
+      compareAtPricePaise: 2599900,
+      taxRatePercentage: 18,
+      isFeatured: true,
+      isPublished: true,
+      isNewArrival: false,
+      ratingAverage: 5.0,
+      ratingCount: 31,
+      tags: ['filigree', 'tarakasi', 'silver-925', 'odisha', 'minaudiere', 'jewelry'],
+      material: 'Hallmarked 92.5 Sterling Silver, Cultured Seed Pearls, Silk Velvet',
+      careInstructions: 'Keep in anti-tarnish velvet pouch; wipe with microfibre cloth',
+      media: [
+        {
+          id: 'm14',
+          productId: 'p0000001-0000-0000-0000-000000000013',
+          imageUrl: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85',
+          altText: 'Tarakasi Silver Filigree Minaudiere Clutch',
+          displayOrder: 1,
+          isPrimary: true
+        }
+      ],
+      variants: [
+        {
+          id: 'v17',
+          productId: 'p0000001-0000-0000-0000-000000000013',
+          sku: 'PRT-ACC-06-SLV-OS',
+          size: 'One Size',
+          colorName: 'Antiqued 925 Silver',
+          colorHex: '#d8d8d8',
+          additionalPricePaise: 0,
+          stockQuantity: 9,
+          isAvailable: true
+        }
+      ],
+      createdAt: '2026-01-20T10:00:00Z',
+      updatedAt: '2026-01-20T10:00:00Z'
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000021",
+      "title": "Srikalahasti Freehand Kalamkari Pure Silk Saree",
+      "slug": "srikalahasti-freehand-kalamkari-pure-silk-saree",
+      "skuPrefix": "PRT-AP-KAL-21",
+      "shortDescription": "Hand-painted narrative mythological tapestry executed with organic vegetable dyes on handspun mulberry silk.",
+      "description": "Authentic temple craft from Andhra Pradesh: master artisans draw celestial deities, tree of life, and floral vines freehand using bamboo kalams and tamarind-charcoal ink, softened through multiple buffalo milk baths.",
+      "categoryName": "Kalamkari Tapestry",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Andhra Pradesh",
+      "clothingType": "Saree",
+      "craftTechnique": "Kalamkari",
+      "fabric": "100% Pure Mulberry Silk",
+      "basePricePaise": 2650000,
+      "compareAtPricePaise": 3150000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.96,
+      "ratingCount": 38,
+      "tags": [
+        "andhra pradesh",
+        "kalamkari",
+        "saree",
+        "handpainted",
+        "vegetable-dye",
+        "traditional"
+      ],
+      "material": "Pure Mulberry Silk; Certified Organic Vegetable Dyes",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m21",
+          "productId": "p0000001-0000-0000-0000-000000000021",
+          "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Srikalahasti Freehand Kalamkari Pure Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v21",
+          "productId": "p0000001-0000-0000-0000-000000000021",
+          "sku": "PRT-AP-KAL-21-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Madder Ochre & Earth Indigo",
+          "colorHex": "#c27d38",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000022",
+      "title": "Machilipatnam Kalamkari Handblock Chanderi Silk Suit Set",
+      "slug": "machilipatnam-kalamkari-handblock-chanderi-silk-suit-set",
+      "skuPrefix": "PRT-AP-KAL-22",
+      "shortDescription": "Traditional woodblock printed floral Persian butas on airy Chanderi silk with matching dupatta.",
+      "description": "Andhra Pradesh coastal craft heritage: carved teakwood blocks pressed rhythmically with alum and natural river dyes on gossamer silk.",
+      "categoryName": "Kalamkari Tapestry",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Andhra Pradesh",
+      "clothingType": "Suit",
+      "craftTechnique": "Kalamkari",
+      "fabric": "Chanderi Silk with Cotton Silk Trousers",
+      "basePricePaise": 1850000,
+      "compareAtPricePaise": 2200000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.92,
+      "ratingCount": 19,
+      "tags": [
+        "andhra pradesh",
+        "kalamkari",
+        "suit",
+        "anarkali",
+        "handblock",
+        "traditional"
+      ],
+      "material": "Pure Chanderi Silk & Organic Dyes",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m22",
+          "productId": "p0000001-0000-0000-0000-000000000022",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Machilipatnam Kalamkari Handblock Chanderi Silk Suit Set",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v22",
+          "productId": "p0000001-0000-0000-0000-000000000022",
+          "sku": "PRT-AP-KAL-22-M",
+          "size": "M (Bust 38)",
+          "colorName": "Deep Rust & Mineral Black",
+          "colorHex": "#8b3a2b",
+          "additionalPricePaise": 0,
+          "stockQuantity": 6,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000023",
+      "title": "Arunachal Mechuka Valley Handwoven Organic Eri Silk Saree",
+      "slug": "apatani-tribal-geometric-handloom-wrap-shawl",
+      "skuPrefix": "PRT-AR-TRB-23",
+      "shortDescription": "Ancestral backstrap loin-loom ceremonial textile in hand-dyed madder and natural black chevron bands.",
+      "description": "Handcrafted by women weavers in Ziro valley, Arunachal Pradesh: symbolic diamond motifs denoting mountain ridges and tribal harmony woven tightly on primitive loin looms.",
+      "categoryName": "Heritage Sarees",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Arunachal Pradesh",
+      "clothingType": "Saree",
+      "craftTechnique": "Tribal Handloom Weaves",
+      "fabric": "Indigenous Organic Cotton & Eri Silk",
+      "basePricePaise": 1650000,
+      "compareAtPricePaise": 1950000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.95,
+      "ratingCount": 14,
+      "tags": [
+        "arunachal pradesh",
+        "tribal",
+        "loin-loom",
+        "shawl",
+        "handloom",
+        "traditional"
+      ],
+      "material": "Organic Handspun Cotton & Raw Eri Peace Silk",
+      "careInstructions": "Hand wash gently in cold water with mild silk detergent",
+      "media": [
+        {
+          "id": "m23",
+          "productId": "p0000001-0000-0000-0000-000000000023",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Apatani Tribal Geometric Handloom Wrap",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v23",
+          "productId": "p0000001-0000-0000-0000-000000000023",
+          "sku": "PRT-AR-TRB-23-OS",
+          "size": "Free Size (2.4m x 1m)",
+          "colorName": "Tribal Crimson & Charcoal",
+          "colorHex": "#8b1e2d",
+          "additionalPricePaise": 0,
+          "stockQuantity": 5,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000024",
+      "title": "Assam Pure Golden Muga Silk Mekhela Chador",
+      "slug": "assam-pure-golden-muga-silk-mekhela-chador",
+      "skuPrefix": "PRT-ASM-MUG-24",
+      "shortDescription": "Royal Assamese two-piece attire handwoven in naturally golden wild Muga silk with Kingkhap motifs.",
+      "description": "The golden treasure of the Brahmaputra: 100% pure wild Muga silk that shines with natural metallic luster. Features ancestral Kingkhap royal crowns and Karbi floral motifs woven on throw-shuttle looms.",
+      "categoryName": "Assam Golden Looms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Assam",
+      "clothingType": "Saree",
+      "craftTechnique": "Muga Silk, Mekhela Chador",
+      "fabric": "100% Certified Assam Pure Muga Silk",
+      "basePricePaise": 4200000,
+      "compareAtPricePaise": 4800000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 5.0,
+      "ratingCount": 46,
+      "tags": [
+        "assam",
+        "muga-silk",
+        "mekhela-chador",
+        "saree",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "100% Pure Assam Muga Silk with Zari & Resham Accents",
+      "careInstructions": "Dry clean only; store in unbleached muslin",
+      "media": [
+        {
+          "id": "m24",
+          "productId": "p0000001-0000-0000-0000-000000000024",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Assam Pure Golden Muga Silk Mekhela Chador",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v24",
+          "productId": "p0000001-0000-0000-0000-000000000024",
+          "sku": "PRT-ASM-MUG-24-STD",
+          "size": "Traditional 2-Piece Set with Blouse",
+          "colorName": "Natural Metallic Honey Gold",
+          "colorHex": "#d4af37",
+          "additionalPricePaise": 0,
+          "stockQuantity": 7,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000025",
+      "title": "Bastar Forest Kosa Wild Silk Handloom Saree",
+      "slug": "bastar-forest-kosa-wild-silk-handloom-saree",
+      "skuPrefix": "PRT-CG-KOS-25",
+      "shortDescription": "Harvested from wild Sal forest cocoons, handspun into breathable golden-brown textured silk.",
+      "description": "Indigenous tribal handloom from Champa and Bastar, Chhattisgarh: natural thermal wild Kosa silk known for its organic raw sheen, edged with temple danta borders.",
+      "categoryName": "Tribal Looms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Chhattisgarh",
+      "clothingType": "Saree",
+      "craftTechnique": "Bastar Dhokra, Kosa Silk",
+      "fabric": "100% Wild Forest Kosa Silk",
+      "basePricePaise": 2150000,
+      "compareAtPricePaise": 2550000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.93,
+      "ratingCount": 22,
+      "tags": [
+        "chhattisgarh",
+        "kosa-silk",
+        "saree",
+        "handloom",
+        "wild-silk",
+        "traditional"
+      ],
+      "material": "100% Pure Forest Kosa Silk",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m25",
+          "productId": "p0000001-0000-0000-0000-000000000025",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Bastar Forest Kosa Wild Silk Handloom Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v25",
+          "productId": "p0000001-0000-0000-0000-000000000025",
+          "sku": "PRT-CG-KOS-25-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Earthy Wild Sand & Maroon",
+          "colorHex": "#b08d57",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000026",
+      "title": "Goan Heritage Kunbi Chequered Handloom Cotton-Silk Saree",
+      "slug": "goan-heritage-kunbi-chequered-handloom-cotton-silk-saree",
+      "skuPrefix": "PRT-GOA-KNB-26",
+      "shortDescription": "The historic Konkan coastal check drape woven with organic terracotta red and natural ecru yarn.",
+      "description": "Revived Goan coastal textile tradition: indigenous Kunbi tribe checkered cotton-silk with traditional striped border, breathable for humid tropics and minimalist high-fashion styling.",
+      "categoryName": "Coastal Heritage",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Goa",
+      "clothingType": "Saree",
+      "craftTechnique": "Kunbi Weave",
+      "fabric": "Handspun Cotton-Silk Blend",
+      "basePricePaise": 1450000,
+      "compareAtPricePaise": 1750000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.9,
+      "ratingCount": 16,
+      "tags": [
+        "goa",
+        "kunbi",
+        "saree",
+        "handloom",
+        "checkered",
+        "traditional"
+      ],
+      "material": "Organic Handspun Cotton & Mulberry Silk",
+      "careInstructions": "Gentle hand wash with cold water",
+      "media": [
+        {
+          "id": "m26",
+          "productId": "p0000001-0000-0000-0000-000000000026",
+          "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Goan Heritage Kunbi Chequered Handloom Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v26",
+          "productId": "p0000001-0000-0000-0000-000000000026",
+          "sku": "PRT-GOA-KNB-26-STD",
+          "size": "Standard (6.2m with Blouse)",
+          "colorName": "Goan Terracotta Red & Natural Ecru",
+          "colorHex": "#a03d2b",
+          "additionalPricePaise": 0,
+          "stockQuantity": 9,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000027",
+      "title": "Kutch Ajrakh Hand-Block Natural Indigo Modal Silk Suit Set",
+      "slug": "kutch-ajrakh-hand-block-natural-indigo-modal-silk-suit-set",
+      "skuPrefix": "PRT-GUJ-AJK-27",
+      "shortDescription": "16-stage resist block-printed architectural geometry using true indigo, pomegranate, and river minerals.",
+      "description": "Sacred geometric blocks aligned with mathematical precision by Khatri master dyers in Dhamadka, Gujarat. Paired with a pure zari border dupatta and silk trousers.",
+      "categoryName": "Gujarat Ateliers",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Gujarat",
+      "clothingType": "Suit",
+      "craftTechnique": "Bandhani, Patola, Ajrakh, Kutch Embroidery",
+      "fabric": "Pure Modal Silk with Chanderi Dupatta",
+      "basePricePaise": 1950000,
+      "compareAtPricePaise": 2350000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.97,
+      "ratingCount": 35,
+      "tags": [
+        "gujarat",
+        "ajrakh",
+        "suit",
+        "natural-dye",
+        "indigo",
+        "traditional"
+      ],
+      "material": "100% Modal Silk & Natural Herbal Dyes",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m27",
+          "productId": "p0000001-0000-0000-0000-000000000027",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Kutch Ajrakh Hand-Block Natural Indigo Suit Set",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v27",
+          "productId": "p0000001-0000-0000-0000-000000000027",
+          "sku": "PRT-GUJ-AJK-27-L",
+          "size": "L (Bust 40)",
+          "colorName": "Deep River Indigo & Madder Crimson",
+          "colorHex": "#1f2d4e",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000028",
+      "title": "Haryana Heritage Bagh Phulkari Georgette Festive Suit",
+      "slug": "haryana-heritage-bagh-phulkari-georgette-festive-suit",
+      "skuPrefix": "PRT-HAR-PHU-28",
+      "shortDescription": "Dense silk floss needlework embroidered in traditional geometric diamond motifs with gold accents.",
+      "description": "Heirloom needlecraft from the plains of Haryana: untwisted pat silk threads worked manually from the fabric reverse to form unbroken flower-garden tapestries.",
+      "categoryName": "Phulkari Needlecraft",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Haryana",
+      "clothingType": "Suit",
+      "craftTechnique": "Phulkari (regional), Panja Durries",
+      "fabric": "Pure Georgette with Chanderi Silk Dupatta",
+      "basePricePaise": 1680000,
+      "compareAtPricePaise": 1980000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.88,
+      "ratingCount": 18,
+      "tags": [
+        "haryana",
+        "phulkari",
+        "suit",
+        "embroidery",
+        "traditional"
+      ],
+      "material": "Pure Georgette & Untwisted Silk Floss",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m28",
+          "productId": "p0000001-0000-0000-0000-000000000028",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Haryana Heritage Bagh Phulkari Festive Suit",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v28",
+          "productId": "p0000001-0000-0000-0000-000000000028",
+          "sku": "PRT-HAR-PHU-28-M",
+          "size": "M (Bust 38)",
+          "colorName": "Marigold Gold & Festive Rust",
+          "colorHex": "#e09f3e",
+          "additionalPricePaise": 0,
+          "stockQuantity": 7,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000029",
+      "title": "Kullu Valley Heritage Pure Merino Wool Shawl & Kurta Ensemble",
+      "slug": "kullu-valley-heritage-pure-merino-wool-ensemble",
+      "skuPrefix": "PRT-HP-KUL-29",
+      "shortDescription": "High-altitude handwoven merino wool with vibrant Himalayan geometric temple borders.",
+      "description": "Crafted on frame pitlooms across the Kullu valley in Himachal Pradesh: interlocking geometric tapestries woven by generational weaver families for winter warmth and regal elegance.",
+      "categoryName": "Himalayan Looms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Himachal Pradesh",
+      "clothingType": "Suit",
+      "craftTechnique": "Kullu Shawls, Chamba Rumal",
+      "fabric": "100% Pure Fine Merino Wool & Silk Blend",
+      "basePricePaise": 1850000,
+      "compareAtPricePaise": 2200000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.95,
+      "ratingCount": 27,
+      "tags": [
+        "himachal pradesh",
+        "kullu",
+        "wool",
+        "shawl",
+        "suit",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "100% Pure Himalayan Merino Wool",
+      "careInstructions": "Dry clean only; store with cedar balls",
+      "media": [
+        {
+          "id": "m29",
+          "productId": "p0000001-0000-0000-0000-000000000029",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Kullu Valley Heritage Pure Wool Shawl & Ensemble",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v29",
+          "productId": "p0000001-0000-0000-0000-000000000029",
+          "sku": "PRT-HP-KUL-29-OS",
+          "size": "Standard Ensemble Set",
+          "colorName": "Alpine Grey & Himalayan Multicolor",
+          "colorHex": "#5c5c5c",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000030",
+      "title": "Jharkhand Sohrai Handpainted Wild Tasar Silk Saree",
+      "slug": "jharkhand-sohrai-handpainted-wild-tasar-silk-saree",
+      "skuPrefix": "PRT-JH-SOH-30",
+      "shortDescription": "Sacred indigenous mud-resist ceremonial harvest murals hand-painted onto wild crisp Tasar silk.",
+      "description": "Indigenous tribal ritual art translated onto handloom silk by Santhal and Oraon women artisans in Hazaribagh, Jharkhand: depicting forest animals, peacocks, and flowering lotus stems in mineral pigments.",
+      "categoryName": "Tribal Looms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Jharkhand",
+      "clothingType": "Saree",
+      "craftTechnique": "Sohrai/Khovar, Tasar Silk",
+      "fabric": "100% Handspun Wild Tasar Silk",
+      "basePricePaise": 2350000,
+      "compareAtPricePaise": 2750000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.96,
+      "ratingCount": 21,
+      "tags": [
+        "jharkhand",
+        "sohrai",
+        "tasar-silk",
+        "saree",
+        "handpainted",
+        "traditional"
+      ],
+      "material": "Pure Wild Tasar Silk & Natural Mineral Dyes",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m30",
+          "productId": "p0000001-0000-0000-0000-000000000030",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Jharkhand Sohrai Handpainted Wild Tasar Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v30",
+          "productId": "p0000001-0000-0000-0000-000000000030",
+          "sku": "PRT-JH-SOH-30-STD",
+          "size": "Standard (6.4m with Blouse)",
+          "colorName": "Raw Honey Tasar & Charcoal Ochre",
+          "colorHex": "#c99a53",
+          "additionalPricePaise": 0,
+          "stockQuantity": 6,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000031",
+      "title": "Mysore Royal Gold Zari Crepe Silk Saree",
+      "slug": "mysore-royal-gold-zari-crepe-silk-saree",
+      "skuPrefix": "PRT-KAR-MYS-31",
+      "shortDescription": "Sovereign palace drape woven with 100% pure crepe silk and tested solid gold zari borders.",
+      "description": "Produced under Karnataka royal patronage: featherlight yet intensely durable crepe silk bathed in pure liquid gold zari threads, bearing unmatched fluid drape and regal sheen.",
+      "categoryName": "Southern Sovereigns",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Karnataka",
+      "clothingType": "Saree",
+      "craftTechnique": "Ilkal, Kasuti, Mysore Silk",
+      "fabric": "100% Pure Crepe Silk with Tested Gold Zari",
+      "basePricePaise": 3450000,
+      "compareAtPricePaise": 3950000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.99,
+      "ratingCount": 40,
+      "tags": [
+        "karnataka",
+        "mysore-silk",
+        "saree",
+        "crepe-silk",
+        "gold-zari",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Pure Mulberry Crepe Silk & Real Silver Electroplated Gold Zari",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m31",
+          "productId": "p0000001-0000-0000-0000-000000000031",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Mysore Royal Gold Zari Crepe Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v31",
+          "productId": "p0000001-0000-0000-0000-000000000031",
+          "sku": "PRT-KAR-MYS-31-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Royal Emerald & Antique Gold",
+          "colorHex": "#125e40",
+          "additionalPricePaise": 0,
+          "stockQuantity": 9,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000032",
+      "title": "Ilkal Chiki Paras Saree with Hand-Done Kasuti Needlework",
+      "slug": "ilkal-chiki-paras-saree-kasuti-needlework",
+      "skuPrefix": "PRT-KAR-ILK-32",
+      "shortDescription": "Traditional red Tope Teni pallu drape with count-thread Kasuti gopura temple embroidery.",
+      "description": "Centuries-old Karnataka weaving tradition: cotton-silk body joined to a pure silk pallu with interlocking kondi technique, embroidered with Kasuti temple chariots by master women artisans.",
+      "categoryName": "Southern Sovereigns",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Karnataka",
+      "clothingType": "Saree",
+      "craftTechnique": "Ilkal, Kasuti, Mysore Silk",
+      "fabric": "Ilkal Cotton-Silk Blend with Pure Silk Pallu",
+      "basePricePaise": 1980000,
+      "compareAtPricePaise": 2300000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.93,
+      "ratingCount": 24,
+      "tags": [
+        "karnataka",
+        "ilkal",
+        "kasuti",
+        "saree",
+        "handloom",
+        "traditional"
+      ],
+      "material": "Handloom Cotton-Silk & Resham Embroidery",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m32",
+          "productId": "p0000001-0000-0000-0000-000000000032",
+          "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Ilkal Chiki Paras Saree with Kasuti Needlework",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v32",
+          "productId": "p0000001-0000-0000-0000-000000000032",
+          "sku": "PRT-KAR-ILK-32-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Crimson Ruby & Indigo Navy",
+          "colorHex": "#8e1e2d",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000033",
+      "title": "Balaramapuram Pure Kasavu 24K Gold Zari Tissue Silk Saree",
+      "slug": "balaramapuram-pure-kasavu-gold-zari-tissue-silk-saree",
+      "skuPrefix": "PRT-KER-KAS-33",
+      "shortDescription": "The sacred ceremonial Kerala drape in unbleached cream cotton-silk with pure woven gold tissue border.",
+      "description": "Woven in the royal artisan village of Balaramapuram: pure natural ecru yarn bathed in spring water and woven on pitlooms with radiant gold zari temple motifs, worn for sacred Onam and wedding ceremonies.",
+      "categoryName": "Southern Sovereigns",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Kerala",
+      "clothingType": "Saree",
+      "craftTechnique": "Kasavu",
+      "fabric": "Finest Handspun Cotton & Mulberry Silk Tissue",
+      "basePricePaise": 2950000,
+      "compareAtPricePaise": 3400000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.98,
+      "ratingCount": 44,
+      "tags": [
+        "kerala",
+        "kasavu",
+        "saree",
+        "gold-zari",
+        "balaramapuram",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Fine Handspun Cotton, Pure Silk & 24K Gold Plated Zari",
+      "careInstructions": "Dry clean recommended to preserve gold zari sheen",
+      "media": [
+        {
+          "id": "m33",
+          "productId": "p0000001-0000-0000-0000-000000000033",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Balaramapuram Pure Kasavu Gold Zari Tissue Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v33",
+          "productId": "p0000001-0000-0000-0000-000000000033",
+          "sku": "PRT-KER-KAS-33-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Sacred Natural Cream & 24K Gold",
+          "colorHex": "#f4ede0",
+          "additionalPricePaise": 0,
+          "stockQuantity": 10,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000034",
+      "title": "Maheshwari Handloom Reversible Zari Border Silk Suit Set",
+      "slug": "maheshwari-handloom-reversible-zari-silk-suit-set",
+      "skuPrefix": "PRT-MP-MAH-34",
+      "shortDescription": "Queen Ahilyabai Holkar legacy weave with geometric fort-wall zari borders and gossamer dupatta.",
+      "description": "Handcrafted on the banks of sacred Narmada in Maheshwar, MP: delicate mulberry silk-cotton warp with signature Bugdi reversible borders, paired with hand-dyed straight trousers.",
+      "categoryName": "Central Looms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Madhya Pradesh",
+      "clothingType": "Suit",
+      "craftTechnique": "Chanderi, Maheshwari, Bagh Print, Gond Art",
+      "fabric": "Handloom Maheshwari Silk-Cotton Blend",
+      "basePricePaise": 2100000,
+      "compareAtPricePaise": 2450000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.94,
+      "ratingCount": 31,
+      "tags": [
+        "madhya pradesh",
+        "maheshwari",
+        "suit",
+        "handloom",
+        "zari",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Pure Mulberry Silk & Fine Cotton Blend",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m34",
+          "productId": "p0000001-0000-0000-0000-000000000034",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Maheshwari Handloom Reversible Zari Silk Suit Set",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v34",
+          "productId": "p0000001-0000-0000-0000-000000000034",
+          "sku": "PRT-MP-MAH-34-M",
+          "size": "M (Bust 38)",
+          "colorName": "Royal Magenta & Antique Gold",
+          "colorHex": "#8e1f57",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000035",
+      "title": "Manipur Moirang Phee Temple Lotus Handwoven Silk Saree",
+      "slug": "manipur-moirang-phee-temple-lotus-handwoven-silk-saree",
+      "skuPrefix": "PRT-MN-MOI-35",
+      "shortDescription": "Imperial stepped Yarong temple skirt border handwoven with pure resham on traditional waist loin looms.",
+      "description": "The sacred heirloom of Manipur: geometric stepped motifs mirroring the roof of Lord Ibudhou Thangjing temple, woven with gossamer transparency and exceptional lightweight drape.",
+      "categoryName": "Northeast Heritage",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Manipur",
+      "clothingType": "Saree",
+      "craftTechnique": "Moirang Phee, Manipuri Weaves",
+      "fabric": "Pure Mulberry Silk & Fine Cotton",
+      "basePricePaise": 2700000,
+      "compareAtPricePaise": 3100000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.96,
+      "ratingCount": 23,
+      "tags": [
+        "manipur",
+        "moirang-phee",
+        "saree",
+        "handwoven",
+        "temple-border",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Handwoven Mulberry Silk & Natural Cotton",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m35",
+          "productId": "p0000001-0000-0000-0000-000000000035",
+          "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Manipur Moirang Phee Temple Lotus Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v35",
+          "productId": "p0000001-0000-0000-0000-000000000035",
+          "sku": "PRT-MN-MOI-35-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Lotus Pink & Ivory Zari",
+          "colorHex": "#d97092",
+          "additionalPricePaise": 0,
+          "stockQuantity": 6,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000036",
+      "title": "Meghalaya Organic Ryndia Eri Peace Silk Handwoven Drape",
+      "slug": "meghalaya-organic-ryndia-eri-peace-silk-handwoven-drape",
+      "skuPrefix": "PRT-MEG-RYN-36",
+      "shortDescription": "Ahimsa non-violent thermal peace silk handspun by Khasi master women weavers using plant dyes.",
+      "description": "Harvested ethically in Ri-Bhoi, Meghalaya where the silkworm naturally emerges. Dyed with turmeric, lac, and madder roots, this thermal silk stays cool in summer and cozy warm in winter.",
+      "categoryName": "Northeast Heritage",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Meghalaya",
+      "clothingType": "Saree",
+      "craftTechnique": "Eri Silk (Ryndia)",
+      "fabric": "100% Organic Ahimsa Eri Silk (Ryndia)",
+      "basePricePaise": 2600000,
+      "compareAtPricePaise": 3000000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.97,
+      "ratingCount": 19,
+      "tags": [
+        "meghalaya",
+        "eri-silk",
+        "ryndia",
+        "saree",
+        "ahimsa-silk",
+        "traditional"
+      ],
+      "material": "100% Handspun Eri Peace Silk & Plant Dyes",
+      "careInstructions": "Hand wash gently in cold water with wool/silk cleanser",
+      "media": [
+        {
+          "id": "m36",
+          "productId": "p0000001-0000-0000-0000-000000000036",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Meghalaya Organic Ryndia Eri Peace Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v36",
+          "productId": "p0000001-0000-0000-0000-000000000036",
+          "sku": "PRT-MEG-RYN-36-STD",
+          "size": "Standard (6.2m with Blouse)",
+          "colorName": "Warm Terracotta & Natural Cream",
+          "colorHex": "#be5a38",
+          "additionalPricePaise": 0,
+          "stockQuantity": 7,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000037",
+      "title": "Mizoram Puanchei Traditional Ceremonial Handwoven Ensemble",
+      "slug": "mizoram-puanchei-traditional-ceremonial-handwoven-ensemble",
+      "skuPrefix": "PRT-MIZ-PUA-37",
+      "shortDescription": "The crown celebratory attire of Mizoram woven with vibrant crimson, deep black, and white cross-stripes.",
+      "description": "Essential heirloom worn during the Cheraw festival: handwoven on traditional loin looms with intricate multi-colored warp bands and rich supplementary weft geometry.",
+      "categoryName": "Northeast Heritage",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Mizoram",
+      "clothingType": "Suit",
+      "craftTechnique": "Mizo Puan",
+      "fabric": "Pure Handwoven Cotton & Mulberry Silk",
+      "basePricePaise": 2150000,
+      "compareAtPricePaise": 2500000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.92,
+      "ratingCount": 17,
+      "tags": [
+        "mizoram",
+        "mizo-puan",
+        "puanchei",
+        "ensemble",
+        "handwoven",
+        "traditional"
+      ],
+      "material": "Handwoven Cotton & Silk with Natural Dyes",
+      "careInstructions": "Hand wash cold or gentle dry clean",
+      "media": [
+        {
+          "id": "m37",
+          "productId": "p0000001-0000-0000-0000-000000000037",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Mizoram Puanchei Ceremonial Handwoven Ensemble",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v37",
+          "productId": "p0000001-0000-0000-0000-000000000037",
+          "sku": "PRT-MIZ-PUA-37-M",
+          "size": "M (Bust 38)",
+          "colorName": "Festive Crimson, Jet Black & Pearl",
+          "colorHex": "#a11d2e",
+          "additionalPricePaise": 0,
+          "stockQuantity": 6,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000038",
+      "title": "Nagaland Angami Handwoven Silk Mekhela Saree Set",
+      "slug": "nagaland-tsungkotepsu-heritage-handloom-ceremonial-shawl",
+      "skuPrefix": "PRT-NAG-SHA-38",
+      "shortDescription": "Sacred warrior ceremonial wrap woven with heraldic symbols of valor and harvest.",
+      "description": "The proud tradition of Ao Nagas: handwoven on loin backstrap looms using natural handspun cotton and wild nettle yarn. Embellished with painted animal motifs and bold median stripes.",
+      "categoryName": "Heritage Sarees",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Nagaland",
+      "clothingType": "Saree",
+      "craftTechnique": "Naga Shawls",
+      "fabric": "Indigenous Organic Cotton & Nettle Yarn",
+      "basePricePaise": 1750000,
+      "compareAtPricePaise": 2100000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.95,
+      "ratingCount": 20,
+      "tags": [
+        "nagaland",
+        "naga-shawl",
+        "shawl",
+        "loin-loom",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "100% Handloom Cotton & Natural Bark Dyes",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m38",
+          "productId": "p0000001-0000-0000-0000-000000000038",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Nagaland Tsungkotepsu Heritage Ceremonial Shawl",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v38",
+          "productId": "p0000001-0000-0000-0000-000000000038",
+          "sku": "PRT-NAG-SHA-38-OS",
+          "size": "Free Size (2.3m x 1.1m)",
+          "colorName": "Ebony Black, Vermillion & Bone",
+          "colorHex": "#2b2b2b",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000039",
+      "title": "Sambalpuri Double-Ikat Silk Saree with Bomkai Temple Border",
+      "slug": "sambalpuri-double-ikat-silk-saree-bomkai-border",
+      "skuPrefix": "PRT-ODI-IKT-39",
+      "shortDescription": "Precision tie-dyed Bandha warp and weft with sacred Shankha conch and Bomkai temple motifs.",
+      "description": "The math and mysticism of Odisha: master Bhulia weavers tie-dye individual silk filaments before mounting on wooden pitlooms, creating mesmerizing stepped geometries and temple spires.",
+      "categoryName": "Odisha Handlooms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Odisha",
+      "clothingType": "Saree",
+      "craftTechnique": "Sambalpuri/Ikat, Pattachitra, Bomkai",
+      "fabric": "100% Pure Mulberry Silk",
+      "basePricePaise": 3600000,
+      "compareAtPricePaise": 4100000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.98,
+      "ratingCount": 39,
+      "tags": [
+        "odisha",
+        "sambalpuri",
+        "ikat",
+        "bomkai",
+        "saree",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Pure Mulberry Silk & Natural Dyes",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m39",
+          "productId": "p0000001-0000-0000-0000-000000000039",
+          "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Sambalpuri Double-Ikat Silk Saree with Bomkai Border",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v39",
+          "productId": "p0000001-0000-0000-0000-000000000039",
+          "sku": "PRT-ODI-IKT-39-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Temple Maroon & Raven Black",
+          "colorHex": "#7a1a28",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000040",
+      "title": "Raghurajpur Pattachitra Handpainted Silk Saree",
+      "slug": "raghurajpur-pattachitra-handpainted-silk-saree",
+      "skuPrefix": "PRT-ODI-PAT-40",
+      "shortDescription": "Jagannath temple chronicles hand-painted with stone minerals and bamboo pens on Tussar silk.",
+      "description": "Directly from the heritage artisan village of Raghurajpur, Odisha: divine scroll tapestries illustrating Krishna Leela, with intricate floral borders cured in conch shell lime.",
+      "categoryName": "Odisha Handlooms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Odisha",
+      "clothingType": "Saree",
+      "craftTechnique": "Sambalpuri/Ikat, Pattachitra, Bomkai",
+      "fabric": "100% Handspun Tussar Silk",
+      "basePricePaise": 3150000,
+      "compareAtPricePaise": 3650000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.97,
+      "ratingCount": 26,
+      "tags": [
+        "odisha",
+        "pattachitra",
+        "saree",
+        "handpainted",
+        "traditional"
+      ],
+      "material": "Handspun Tussar Silk & Natural Mineral Pigments",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m40",
+          "productId": "p0000001-0000-0000-0000-000000000040",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Raghurajpur Pattachitra Handpainted Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v40",
+          "productId": "p0000001-0000-0000-0000-000000000040",
+          "sku": "PRT-ODI-PAT-40-STD",
+          "size": "Standard (6.4m with Blouse)",
+          "colorName": "Raw Honey Ivory & Mineral Vermillion",
+          "colorHex": "#e5d3b3",
+          "additionalPricePaise": 0,
+          "stockQuantity": 6,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000041",
+      "title": "Sikkimese Handwoven Brocade Honju & Bakhu Festive Wrap",
+      "slug": "sikkimese-handwoven-brocade-honju-bakhu-wrap",
+      "skuPrefix": "PRT-SIK-BAK-41",
+      "shortDescription": "Traditional Himalayan Buddhist cloud and lotus motifs woven with metallic brocade silk.",
+      "description": "The traditional ceremonial dress of the Bhutia and Lepcha communities in Sikkim: woven with sacred Ashtamangala emblems, paired with a fluid silk Honju inner blouse.",
+      "categoryName": "Himalayan Looms",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Sikkim",
+      "clothingType": "Suit",
+      "craftTechnique": "Traditional Handicrafts (Thangka-influenced motifs)",
+      "fabric": "Brocade Silk & Fine Himalayan Wool",
+      "basePricePaise": 1900000,
+      "compareAtPricePaise": 2250000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.91,
+      "ratingCount": 15,
+      "tags": [
+        "sikkim",
+        "bakhu",
+        "brocade",
+        "suit",
+        "traditional"
+      ],
+      "material": "Brocade Silk & Mountain Wool",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m41",
+          "productId": "p0000001-0000-0000-0000-000000000041",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Sikkimese Handwoven Brocade Honju & Bakhu Wrap",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v41",
+          "productId": "p0000001-0000-0000-0000-000000000041",
+          "sku": "PRT-SIK-BAK-41-M",
+          "size": "M (Bust 38)",
+          "colorName": "Tibetan Turquoise & Imperial Gold",
+          "colorHex": "#208b8b",
+          "additionalPricePaise": 0,
+          "stockQuantity": 7,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000042",
+      "title": "Pochampally Chowka Double-Ikat Pure Silk Saree",
+      "slug": "pochampally-chowka-double-ikat-pure-silk-saree",
+      "skuPrefix": "PRT-TEL-IKT-42",
+      "shortDescription": "Precision diamond resist-dyed warp and weft silk woven in Telangana's Silk City.",
+      "description": "UNESCO World Tourism Village craft: Pochampally weavers bundle and align silk threads with razor-sharp geometric alignment, finished with pure tested zari borders.",
+      "categoryName": "Southern Sovereigns",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Telangana",
+      "clothingType": "Saree",
+      "craftTechnique": "Pochampally Ikat, Gadwal",
+      "fabric": "100% Pure Mulberry Silk",
+      "basePricePaise": 3300000,
+      "compareAtPricePaise": 3800000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.97,
+      "ratingCount": 36,
+      "tags": [
+        "telangana",
+        "pochampally",
+        "ikat",
+        "saree",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "100% Pure Mulberry Silk & Tested Zari",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m42",
+          "productId": "p0000001-0000-0000-0000-000000000042",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Pochampally Chowka Double-Ikat Pure Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v42",
+          "productId": "p0000001-0000-0000-0000-000000000042",
+          "sku": "PRT-TEL-IKT-42-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Sapphire Royal Blue & Crimson Zari",
+          "colorHex": "#1b3b6f",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000043",
+      "title": "Gadwal Pure Silk Handloom Kuttu Zari Saree",
+      "slug": "gadwal-pure-silk-handloom-kuttu-zari-saree",
+      "skuPrefix": "PRT-TEL-GAD-43",
+      "shortDescription": "Interlocked Kuttu weaving connecting pure silk body to heavy solid gold zari temple borders.",
+      "description": "Historical heritage of Telangana: breathable lightweight silk woven with manual three-shuttle Kuttu interlocking that can be folded into the size of a matchbox.",
+      "categoryName": "Southern Sovereigns",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Telangana",
+      "clothingType": "Saree",
+      "craftTechnique": "Pochampally Ikat, Gadwal",
+      "fabric": "100% Pure Silk with Heavy Zari",
+      "basePricePaise": 2850000,
+      "compareAtPricePaise": 3300000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.94,
+      "ratingCount": 25,
+      "tags": [
+        "telangana",
+        "gadwal",
+        "saree",
+        "kuttu",
+        "handloom",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Pure Mulberry Silk & Rich Gold Zari",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m43",
+          "productId": "p0000001-0000-0000-0000-000000000043",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Gadwal Pure Silk Handloom Kuttu Zari Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v43",
+          "productId": "p0000001-0000-0000-0000-000000000043",
+          "sku": "PRT-TEL-GAD-43-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Peacock Teal & Mustard Zari",
+          "colorHex": "#0d5c75",
+          "additionalPricePaise": 0,
+          "stockQuantity": 7,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000044",
+      "title": "Tripura Pachra & Rignai Ceremonial Handloom Silk Saree",
+      "slug": "tripura-indigenous-risa-handwoven-ceremonial-stole",
+      "skuPrefix": "PRT-TRI-RIS-44",
+      "shortDescription": "Sacred ceremonial handloom breast and neck wrap woven with geometric Kosom patterns.",
+      "description": "Deeply revered Tripuri tribal craft: handwoven by master women weavers on traditional loin looms with rich contrasting borders of crimson, green, and natural wild silk.",
+      "categoryName": "Pure Silk Sarees",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Tripura",
+      "clothingType": "Saree",
+      "craftTechnique": "Risa (Handwoven Cloth)",
+      "fabric": "Indigenous Cotton & Silk Handloom",
+      "basePricePaise": 1550000,
+      "compareAtPricePaise": 1850000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.9,
+      "ratingCount": 16,
+      "tags": [
+        "tripura",
+        "risa",
+        "handwoven",
+        "stole",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Handspun Cotton & Natural Silk",
+      "careInstructions": "Gentle hand wash in cold water",
+      "media": [
+        {
+          "id": "m44",
+          "productId": "p0000001-0000-0000-0000-000000000044",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Tripura Indigenous Risa Handwoven Stole",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v44",
+          "productId": "p0000001-0000-0000-0000-000000000044",
+          "sku": "PRT-TRI-RIS-44-OS",
+          "size": "Ceremonial Wrap (2.2m x 0.9m)",
+          "colorName": "Crimson Ruby & Forest Green",
+          "colorHex": "#961c2e",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000045",
+      "title": "Uttarakhand Kumaoni Pichora Ceremonial Festive Silk Saree",
+      "slug": "kumaoni-aipan-ceremonial-hand-embroidered-festive-stole",
+      "skuPrefix": "PRT-UK-AIP-45",
+      "shortDescription": "Sacred ritual geometric Aipan chowki motifs translated into white resham needlework on ochre silk.",
+      "description": "Kumaon folk ritual art from Uttarakhand: sacred circular geometries representing cosmic blessing, embroidered manually on pure raw silk with gold-piped borders.",
+      "categoryName": "Festive Sarees",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Uttarakhand",
+      "clothingType": "Saree",
+      "craftTechnique": "Aipan",
+      "fabric": "Pure Tussar Silk with Resham Embroidery",
+      "basePricePaise": 1400000,
+      "compareAtPricePaise": 1700000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.91,
+      "ratingCount": 18,
+      "tags": [
+        "uttarakhand",
+        "aipan",
+        "stole",
+        "hand-embroidered",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "100% Pure Silk & Untwisted Resham Floss",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m45",
+          "productId": "p0000001-0000-0000-0000-000000000045",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Uttarakhand Kumaoni Pichora Ceremonial Festive Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v45",
+          "productId": "p0000001-0000-0000-0000-000000000045",
+          "sku": "PRT-UK-AIP-45-OS",
+          "size": "Free Size (2.2m x 0.8m)",
+          "colorName": "Geru Ochre & Sacred White",
+          "colorHex": "#9b3d2b",
+          "additionalPricePaise": 0,
+          "stockQuantity": 9,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000046",
+      "title": "Dhakai Jamdani Gossamer Fine Muslin Silk Saree",
+      "slug": "dhakai-jamdani-gossamer-fine-muslin-silk-saree",
+      "skuPrefix": "PRT-WB-JAM-46",
+      "shortDescription": "Floating supplementary weft floral jaal woven with featherlight transparency on wooden pitlooms.",
+      "description": "UNESCO Intangible Cultural Heritage: master Bengal weavers insert individual floral motifs manually using bamboo needles into gossamer muslin, creating the illusion of floating embroidery.",
+      "categoryName": "Bengal Master Weaves",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "West Bengal",
+      "clothingType": "Saree",
+      "craftTechnique": "Kantha, Jamdani, Baluchari",
+      "fabric": "Fine Muslin Cotton & Mulberry Silk",
+      "basePricePaise": 3800000,
+      "compareAtPricePaise": 4400000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.99,
+      "ratingCount": 42,
+      "tags": [
+        "west bengal",
+        "jamdani",
+        "saree",
+        "muslin",
+        "handwoven",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "Fine Handspun Muslin Cotton & Pure Mulberry Silk",
+      "careInstructions": "Dry clean only; handle delicately",
+      "media": [
+        {
+          "id": "m46",
+          "productId": "p0000001-0000-0000-0000-000000000046",
+          "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Dhakai Jamdani Gossamer Fine Muslin Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v46",
+          "productId": "p0000001-0000-0000-0000-000000000046",
+          "sku": "PRT-WB-JAM-46-STD",
+          "size": "Standard (6.3m with Blouse)",
+          "colorName": "Pristine Ivory & Soft Gold Zari",
+          "colorHex": "#f7f4ed",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000047",
+      "title": "Bolpur Kantha Stitch Pure Murshidabad Silk Saree",
+      "slug": "bolpur-kantha-stitch-pure-murshidabad-silk-saree",
+      "skuPrefix": "PRT-WB-KAN-47",
+      "shortDescription": "Intricate multi-colored running needlework illustrating rural Bengal life and floral kalkas.",
+      "description": "Six months of dedicated hand embroidery: Shantiniketan artisan collectives stitch delicate narrative tapestries using colorful silk threads across pure, fluid Murshidabad silk.",
+      "categoryName": "Bengal Master Weaves",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "West Bengal",
+      "clothingType": "Saree",
+      "craftTechnique": "Kantha, Jamdani, Baluchari",
+      "fabric": "100% Pure Murshidabad Silk",
+      "basePricePaise": 2550000,
+      "compareAtPricePaise": 2950000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.95,
+      "ratingCount": 29,
+      "tags": [
+        "west bengal",
+        "kantha",
+        "saree",
+        "hand-embroidered",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "100% Pure Silk & High-Grade Resham Floss",
+      "careInstructions": "Dry clean only",
+      "media": [
+        {
+          "id": "m47",
+          "productId": "p0000001-0000-0000-0000-000000000047",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Bolpur Kantha Stitch Pure Murshidabad Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v47",
+          "productId": "p0000001-0000-0000-0000-000000000047",
+          "sku": "PRT-WB-KAN-47-STD",
+          "size": "Standard (6.4m with Blouse)",
+          "colorName": "Blackberry Navy & Multi-hued Resham",
+          "colorHex": "#18203b",
+          "additionalPricePaise": 0,
+          "stockQuantity": 7,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000048",
+      "title": "Ladakhi Goncha Royal Silk Brocade Kurta & Robe Suit Set",
+      "slug": "ladakhi-changthang-nomadic-pure-raw-pashmina-shawl",
+      "skuPrefix": "PRT-LAD-PAS-48",
+      "shortDescription": "Ultra-soft unbleached high-altitude cashmere hand-spun and handwoven on traditional nomadic pitlooms.",
+      "description": "Sourced at 14,000 feet from nomadic Changpa herders in eastern Ladakh: fine underdown fleece spun on wooden takkli spindles, delivering unparalleled gossamer thermal luxury.",
+      "categoryName": "Royal Suits",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Ladakh",
+      "clothingType": "Suit",
+      "craftTechnique": "Pashmina Wool Weaving",
+      "fabric": "100% Pure Certified Changthang Cashmere Pashmina",
+      "basePricePaise": 3200000,
+      "compareAtPricePaise": 3750000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 5.0,
+      "ratingCount": 33,
+      "tags": [
+        "ladakh",
+        "pashmina",
+        "cashmere",
+        "shawl",
+        "high-altitude",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "100% Pure Changthang Mountain Cashmere",
+      "careInstructions": "Dry clean only; wrap in cotton",
+      "media": [
+        {
+          "id": "m48",
+          "productId": "p0000001-0000-0000-0000-000000000048",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Ladakhi Changthang Pure Raw Pashmina Shawl",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v48",
+          "productId": "p0000001-0000-0000-0000-000000000048",
+          "sku": "PRT-LAD-PAS-48-OS",
+          "size": "Free Size (2m x 1m)",
+          "colorName": "Natural Raw Cashmere Camel & Ecru",
+          "colorHex": "#c1a47e",
+          "additionalPricePaise": 0,
+          "stockQuantity": 6,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000049",
+      "title": "Old Delhi Shahjahanabad Imperial Zardozi Metallic Silk Kurta Set",
+      "slug": "old-delhi-shahjahanabad-imperial-zardozi-silk-kurta-set",
+      "skuPrefix": "PRT-DEL-ZAR-49",
+      "shortDescription": "Heavy three-dimensional French bullion wire and real seed pearl embroidery on jewel-tone silk.",
+      "description": "Heirloom karkhana craftsmanship from Chandni Chowk, Delhi: master ustads stretch pure silk velvet across wooden addas, manually stitching real copper-gold wires into imperial Mughal trellises.",
+      "categoryName": "Imperial Ateliers",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Delhi",
+      "clothingType": "Suit",
+      "craftTechnique": "Zardozi (workshop hub, not native craft)",
+      "fabric": "Pure Silk with Silk Velvet Accents",
+      "basePricePaise": 2750000,
+      "compareAtPricePaise": 3200000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.96,
+      "ratingCount": 30,
+      "tags": [
+        "delhi",
+        "zardozi",
+        "suit",
+        "anarkali",
+        "gold-wire",
+        "traditional"
+      ],
+      "material": "Pure Silk, Bullion Metallic Wire & Cultured Pearls",
+      "careInstructions": "Specialist luxury dry clean only",
+      "media": [
+        {
+          "id": "m49",
+          "productId": "p0000001-0000-0000-0000-000000000049",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Old Delhi Imperial Zardozi Metallic Silk Kurta Set",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v49",
+          "productId": "p0000001-0000-0000-0000-000000000049",
+          "sku": "PRT-DEL-ZAR-49-M",
+          "size": "M (Bust 38)",
+          "colorName": "Royal Wine & Antique Gold",
+          "colorHex": "#541223",
+          "additionalPricePaise": 0,
+          "stockQuantity": 7,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000050",
+      "title": "Auroville Heritage Organic Khadi Cotton Handloom Saree",
+      "slug": "auroville-heritage-organic-khadi-cotton-handloom-saree",
+      "skuPrefix": "PRT-PUD-KHA-50",
+      "shortDescription": "Breathable coastal unbleached handspun organic cotton with indigo selvedge.",
+      "description": "Mindful sustainable coastal luxury from Auroville, Puducherry: 100% pesticide-free desi cotton spun on Amber Charkhas and handwoven for cloud-soft everyday elegance.",
+      "categoryName": "Coastal Heritage",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Puducherry",
+      "clothingType": "Saree",
+      "craftTechnique": "Limited native textile tradition",
+      "fabric": "100% Organic Handspun Khadi Cotton",
+      "basePricePaise": 1250000,
+      "compareAtPricePaise": 1550000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.9,
+      "ratingCount": 15,
+      "tags": [
+        "puducherry",
+        "khadi",
+        "cotton",
+        "saree",
+        "handloom",
+        "organic",
+        "traditional"
+      ],
+      "material": "100% Handspun Organic Cotton",
+      "careInstructions": "Hand wash with cold water",
+      "media": [
+        {
+          "id": "m50",
+          "productId": "p0000001-0000-0000-0000-000000000050",
+          "imageUrl": "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Auroville Heritage Organic Khadi Cotton Handloom Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v50",
+          "productId": "p0000001-0000-0000-0000-000000000050",
+          "sku": "PRT-PUD-KHA-50-STD",
+          "size": "Standard (6.2m with Blouse)",
+          "colorName": "Natural Raw Ecru & Indigo Trim",
+          "colorHex": "#f2eee6",
+          "additionalPricePaise": 0,
+          "stockQuantity": 10,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000051",
+      "title": "Andaman Coastal Coromandel Khadi Silk Handloom Saree",
+      "slug": "island-shell-natural-organic-fibre-handcrafted-stole",
+      "skuPrefix": "PRT-AND-SHL-51",
+      "shortDescription": "Sustainable woven wild palm fiber stole accented with mother-of-pearl hand-knotting.",
+      "description": "Handmade by coastal women cooperatives in Port Blair: sustainable pandanus palm fibers hand-twisted and woven with iridescent mother-of-pearl beads.",
+      "categoryName": "Handloom Sarees",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Andaman & Nicobar Islands",
+      "clothingType": "Saree",
+      "craftTechnique": "No major native textile tradition",
+      "fabric": "Natural Palm & Cotton Fiber",
+      "basePricePaise": 950000,
+      "compareAtPricePaise": 1200000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.88,
+      "ratingCount": 12,
+      "tags": [
+        "andaman",
+        "coastal",
+        "stole",
+        "organic-fiber",
+        "traditional"
+      ],
+      "material": "Organic Island Palm Fiber & Mother of Pearl Beads",
+      "careInstructions": "Spot clean only",
+      "media": [
+        {
+          "id": "m51",
+          "productId": "p0000001-0000-0000-0000-000000000051",
+          "imageUrl": "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Island Shell & Natural Organic Fibre Stole",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v51",
+          "productId": "p0000001-0000-0000-0000-000000000051",
+          "sku": "PRT-AND-SHL-51-OS",
+          "size": "Free Size (2m x 0.7m)",
+          "colorName": "Natural Sandy Shell & Raw Flax",
+          "colorHex": "#d9ccb8",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000052",
+      "title": "Chettinad Handloom Kandangi Cotton-Silk Saree",
+      "slug": "chettinad-handloom-kandangi-cotton-silk-saree",
+      "skuPrefix": "PRT-TN-CHE-52",
+      "shortDescription": "Bold contrasting checks and vibrant temple borders woven by Nagarathar community weavers.",
+      "description": "Ancestral southern heritage of Karaikudi, Tamil Nadu: high-contrast mustard, brick red, and jet black checked body with thick pure cotton-silk yarn and ribbed borders.",
+      "categoryName": "Southern Sovereigns",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Tamil Nadu",
+      "clothingType": "Saree",
+      "craftTechnique": "Kanchipuram, Chettinad, Sungudi",
+      "fabric": "Traditional Handloom Cotton-Silk",
+      "basePricePaise": 1650000,
+      "compareAtPricePaise": 1950000,
+      "taxRatePercentage": 18,
+      "isFeatured": false,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.93,
+      "ratingCount": 28,
+      "tags": [
+        "tamil nadu",
+        "chettinad",
+        "kandangi",
+        "saree",
+        "handloom",
+        "traditional",
+        "gi-certified"
+      ],
+      "material": "High-Twist Handloom Cotton & Mulberry Silk",
+      "careInstructions": "Hand wash gently in cold water",
+      "media": [
+        {
+          "id": "m52",
+          "productId": "p0000001-0000-0000-0000-000000000052",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Chettinad Handloom Kandangi Cotton-Silk Saree",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v52",
+          "productId": "p0000001-0000-0000-0000-000000000052",
+          "sku": "PRT-TN-CHE-52-STD",
+          "size": "Standard (6.2m with Blouse)",
+          "colorName": "Chettinad Ochre, Brick & Black",
+          "colorHex": "#b56926",
+          "additionalPricePaise": 0,
+          "stockQuantity": 9,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    },
+    {
+      "id": "p0000001-0000-0000-0000-000000000053",
+      "title": "Kashmiri Tilla & Aari Hand-Embroidered Pure Silk Velvet Suit Set",
+      "slug": "kashmiri-tilla-aari-hand-embroidered-silk-velvet-suit",
+      "skuPrefix": "PRT-JK-TIL-53",
+      "shortDescription": "Real silver and gold-plated Tilla wire needlework embroidered across rich silk velvet with Pashmina dupatta.",
+      "description": "Srinagar master artisan craft: intricate paisley motifs drawn with pointed Aari hooks and pure metallic Tilla wire along the royal neckline and sleeves, paired with a handspun Pashmina shawl.",
+      "categoryName": "Kashmir Pashmina & Needlework",
+      "brandName": "Prati\u00e8 Atelier",
+      "state": "Jammu & Kashmir",
+      "clothingType": "Suit",
+      "craftTechnique": "Pashmina, Kashmiri Embroidery",
+      "fabric": "Pure Silk Velvet with Handspun Pashmina Dupatta",
+      "basePricePaise": 2900000,
+      "compareAtPricePaise": 3400000,
+      "taxRatePercentage": 18,
+      "isFeatured": true,
+      "isPublished": true,
+      "isNewArrival": true,
+      "ratingAverage": 4.98,
+      "ratingCount": 37,
+      "tags": [
+        "jammu & kashmir",
+        "tilla",
+        "velvet",
+        "suit",
+        "kashmiri-embroidery",
+        "traditional"
+      ],
+      "material": "Pure Mulberry Silk Velvet, Tilla Wire & Cashmere Pashmina",
+      "careInstructions": "Specialist dry clean only",
+      "media": [
+        {
+          "id": "m53",
+          "productId": "p0000001-0000-0000-0000-000000000053",
+          "imageUrl": "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85",
+          "altText": "Kashmiri Tilla & Aari Hand-Embroidered Velvet Suit",
+          "displayOrder": 1,
+          "isPrimary": true
+        }
+      ],
+      "variants": [
+        {
+          "id": "v53",
+          "productId": "p0000001-0000-0000-0000-000000000053",
+          "sku": "PRT-JK-TIL-53-M",
+          "size": "M (Bust 38)",
+          "colorName": "Royal Bottle Green & Antique Gold",
+          "colorHex": "#123d24",
+          "additionalPricePaise": 0,
+          "stockQuantity": 8,
+          "isAvailable": true
+        }
+      ],
+      "createdAt": "2026-01-20T10:00:00Z",
+      "updatedAt": "2026-01-20T10:00:00Z",
+      "categoryId": "c0000001-0000-0000-0000-000000000001",
+      "brandId": "b0000001-0000-0000-0000-000000000001"
+    }
+  ];
+
+
+  public coupons: Coupon[] = [
+    {
+      id: 'cp1',
+      code: 'HERITAGE10',
+      discountType: 'percentage',
+      discountValue: 10,
+      minOrderAmountPaise: 500000,
+      maxDiscountAmountPaise: 250000,
+      usedCount: 24,
+      isActive: true
+    },
+    {
+      id: 'cp2',
+      code: 'PRATIEVIP',
+      discountType: 'percentage',
+      discountValue: 20,
+      minOrderAmountPaise: 1500000,
+      maxDiscountAmountPaise: 500000,
+      usedCount: 16,
+      isActive: true
+    },
+    {
+      id: 'cp3',
+      code: 'MITHILA2000',
+      discountType: 'fixed_amount',
+      discountValue: 200000,
+      minOrderAmountPaise: 1000000,
+      usedCount: 42,
+      isActive: true
+    }
+  ];
+
+  public cartItems: CartItem[] = [];
+
+  public orders: Order[] = [
+    {
+      id: 'ord-1001',
+      orderNumber: 'PRT-2026-94812',
+      userId: 'u0000001-0000-0000-0000-000000000002',
+      status: 'delivered',
+      paymentStatus: 'captured',
+      paymentMethod: 'razorpay',
+      razorpayOrderId: 'order_mock_001',
+      razorpayPaymentId: 'pay_mock_001',
+      shippingAddress: {
+        id: 'a1',
+        fullName: 'Meera Kapoor',
+        phone: '+91 9123456780',
+        streetLine1: 'Penthouse 14B, Altamount Towers',
+        city: 'Mumbai',
+        state: 'Maharashtra',
+        postalCode: '400026',
+        country: 'India'
+      },
+      billingAddress: {
+        id: 'a1',
+        fullName: 'Meera Kapoor',
+        phone: '+91 9123456780',
+        streetLine1: 'Penthouse 14B, Altamount Towers',
+        city: 'Mumbai',
+        state: 'Maharashtra',
+        postalCode: '400026',
+        country: 'India'
+      },
+      subtotalPaise: 2499900,
+      taxAmountPaise: 449982,
+      shippingAmountPaise: 0,
+      discountAmountPaise: 249990,
+      totalAmountPaise: 2699892,
+      couponCode: 'HERITAGE10',
+      trackingNumber: 'PRT-BLUE-98214',
+      carrierName: 'Blue Dart Heritage Priority',
+      estimatedDelivery: '2026-02-05',
+      items: [
+        {
+          id: 'oi-1',
+          orderId: 'ord-1001',
+          productId: 'p0000001-0000-0000-0000-000000000001',
+          variantId: 'v1',
+          productTitle: 'Mithila Handpainted Tussar Silk Kurta Set',
+          variantSku: 'PRT-MTH-01-S',
+          size: 'S (Chest 38")',
+          colorName: 'Raw Silk Ivory / Lotus Madder',
+          unitPricePaise: 2499900,
+          quantity: 1,
+          totalPricePaise: 2499900,
+          imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85'
+        }
+      ],
+      createdAt: '2026-02-01T14:20:00Z',
+      updatedAt: '2026-02-05T18:00:00Z'
+    }
+  ];
+
+  public reviews: Review[] = [
+    {
+      id: 'rev-1',
+      productId: 'p0000001-0000-0000-0000-000000000001',
+      userId: 'u0000001-0000-0000-0000-000000000002',
+      authorName: 'Ananya Sharma',
+      rating: 5,
+      title: 'Living art in handspun Tussar',
+      comment: 'The Madhubani brushwork is breathtaking. You can feel the human touch in every single petal and bird motif. Truly heritage redefined.',
+      isVerifiedPurchase: true,
+      isApproved: true,
+      createdAt: '2026-02-06T10:00:00Z'
+    }
+  ];
+}
+
+export const dbStore = new DataStore();
