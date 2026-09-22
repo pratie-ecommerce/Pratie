@@ -26,6 +26,24 @@ export const createApp = (): Express => {
   app.use(express.json({ limit: '10mb' }));
   app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+  // Welcome & API Root
+  app.get('/', (_req, res) => {
+    res.json({
+      status: 'online',
+      service: 'Pratie Luxury E-Commerce REST API',
+      version: '1.0.0',
+      health: '/api/health',
+      endpoints: {
+        products: '/api/products',
+        auth: '/api/auth',
+        cart: '/api/cart',
+        orders: '/api/orders',
+        payments: '/api/payments',
+        admin: '/api/admin'
+      }
+    });
+  });
+
   // Health check
   app.get('/api/health', (_req, res) => {
     res.json({
