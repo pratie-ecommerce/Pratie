@@ -99,16 +99,16 @@ export default function ProductDetailPage() {
     product.basePricePaise + (selectedVariant?.additionalPricePaise || 0) + stitchingAddonPaise;
 
   // Build multi-angle image gallery from authentic product photography
-  const baseImg = product.media?.[0]?.imageUrl || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85';
+  const baseImg = product.media?.[0]?.imageUrl || '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
   const galleryImages = product.media && product.media.length > 1
     ? product.media.map((m) => m.imageUrl)
     : [
         baseImg,
         isSaree 
-          ? 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1200&q=85'
+          ? '/images/products/mithila-haldi-yellow-tussar-saree.jpeg'
           : 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
         isSaree
-          ? 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85'
+          ? '/images/products/mithila-indigo-tussar-silk-saree.jpeg'
           : 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85'
       ];
 

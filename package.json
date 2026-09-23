@@ -14,6 +14,7 @@
     "deploy:dashboard": "vercel --cwd pratie-dashboard",
     "deploy:backend": "vercel --cwd pratie-backend",
     "install:all": "npm --prefix pratie-backend install && npm --prefix pratie-frontend install && npm --prefix pratie-dashboard install",
-    "test:backend": "npm --prefix pratie-backend test"
+    "test:backend": "npm --prefix pratie-backend test",
+    "sync:catalog": "cp pratie-frontend/src/data/products.json pratie-backend/src/data/products.json"
   }
 }

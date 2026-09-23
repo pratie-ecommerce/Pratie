@@ -38,7 +38,7 @@ export const MOCK_PRODUCTS: Product[] = [
     ratingAverage: 4.98,
     ratingCount: 36,
     tags: ['mithila', 'madhubani', 'tussar-silk'],
-    media: [{ imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80' }],
+    media: [{ imageUrl: '/images/products/mithila-handpainted-tussar-silk-saree.jpeg' }],
     variants: [
       { id: 'v1', productId: 'p1', sku: 'PRT-MTH-01-S', size: 'S', colorName: 'Raw Silk Ivory', additionalPricePaise: 0, stockQuantity: 8, isAvailable: true },
       { id: 'v2', productId: 'p1', sku: 'PRT-MTH-01-M', size: 'M', colorName: 'Raw Silk Ivory', additionalPricePaise: 0, stockQuantity: 14, isAvailable: true }

@@ -56,31 +56,22 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-xs">
-      {/* 1. TANEIRA TOP UTILITY ANNOUNCEMENT RIBBON */}
-      <div className="bg-gradient-to-r from-rose-950 via-[#4a0d18] to-rose-950 text-amber-200/90 py-1.5 px-4 sm:px-8 text-[10.5px] tracking-[0.18em] uppercase font-semibold flex items-center justify-between border-b border-amber-500/20">
-        <div className="hidden lg:flex items-center gap-2 text-pink-200/90 font-medium">
-          <ShieldCheck size={13} className="text-amber-300" />
-          <span>Silk Mark Certified &amp; GI Tagged Handlooms</span>
+      {/* 1. TOP UTILITY ANNOUNCEMENT RIBBON */}
+      <div className="bg-[#1f070b] text-amber-200/90 py-1.5 px-4 sm:px-8 text-[10px] tracking-[0.2em] uppercase font-medium flex items-center justify-between border-b border-amber-500/15">
+        <div className="hidden lg:flex items-center gap-1.5 text-pink-200/80">
+          <ShieldCheck size={12} className="text-amber-400" />
+          <span>Silk Mark Certified Handlooms</span>
         </div>
 
         <div className="mx-auto flex items-center gap-2 text-center">
-          <Sparkles size={11} className="text-amber-300 animate-pulse hidden sm:inline" />
-          <span className="text-white font-medium">Complimentary White-Glove Delivery Across India</span>
-          <span className="text-amber-300 hidden sm:inline">•</span>
-          <span className="text-amber-200 font-bold bg-amber-400/20 px-2 py-0.5 rounded-full text-[9.5px]">
-            Code: FESTIVE15 for 15% Off
-          </span>
+          <span className="text-white/90">Complimentary Pan-India Delivery</span>
+          <span className="text-amber-400/50">•</span>
+          <span className="text-amber-300 font-semibold">15% Off With Code FESTIVE15</span>
         </div>
 
-        <div className="hidden lg:flex items-center gap-4 text-pink-200/80 text-[10px]">
-          <a href="tel:+919876543210" className="hover:text-white transition-colors flex items-center gap-1">
-            <Phone size={10} />
-            <span>+91 98765 43210</span>
-          </a>
-          <span>|</span>
-          <Link href="/products" className="hover:text-white transition-colors flex items-center gap-1">
-            <Store size={10} />
-            <span>Find A Store</span>
+        <div className="hidden lg:flex items-center gap-3 text-pink-200/70 text-[9.5px]">
+          <Link href="/products" className="hover:text-white transition-colors">
+            Atelier Directory
           </Link>
         </div>
       </div>
@@ -98,18 +89,18 @@ export const Navbar: React.FC = () => {
           </button>
 
           {/* Brand Logo */}
-          <Link href="/" className="group inline-flex flex-col items-start shrink-0">
+          <Link href="/" className="group inline-flex flex-col items-center sm:items-start shrink-0">
             <div className="brand-logo-wrap">
               <Image
                 src="/images/pratie-logo.png"
                 alt="Pratiè — Heritage Redefined"
                 width={170}
                 height={48}
-                className="h-8 sm:h-10 w-auto brand-logo-img object-contain"
+                className="h-7 sm:h-10 w-auto brand-logo-img object-contain"
                 priority
               />
             </div>
-            <span className="text-[8.5px] tracking-[0.28em] text-amber-900/80 font-bold uppercase -mt-0.5 hidden sm:block">
+            <span className="text-[7.5px] sm:text-[8.5px] tracking-[0.22em] sm:tracking-[0.28em] text-amber-900/85 font-bold uppercase -mt-0.5 block whitespace-nowrap">
               wear india differently
             </span>
           </Link>

@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const primaryImage =
     product.media?.find((m) => m.isPrimary)?.imageUrl ||
     product.media?.[0]?.imageUrl ||
-    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80';
+    '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
 
   const defaultVariant = product.variants?.[0];
   const isWishlisted = isInWishlist(product.id);

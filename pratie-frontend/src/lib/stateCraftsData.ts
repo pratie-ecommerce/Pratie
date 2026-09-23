@@ -21,7 +21,7 @@ export const STATE_CRAFTS_DIRECTORY: StateCraft[] = [
     summary: 'Mithila handpainted folklore & Sujini quilt needlework on pure Bhagalpuri Tussar silk.',
     description: 'Ancestral folk art crafted by women artisans of Mithila using bamboo nibs and natural vegetable pigments, depicting celestial motifs on fine wild Tussar silks.',
     featuredWear: 'Mithila Handpainted Tussar Saree',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85',
+    image: '/images/products/mithila-handpainted-tussar-silk-saree.jpeg',
     badge: 'GI-Certified Tussar Silk',
     isPopular: true
   },

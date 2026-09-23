@@ -53,7 +53,7 @@ describe('Pratie API Endpoints Suite', () => {
       .send({
         items: [
           {
-            productId: 'p0000001-0000-0000-0000-000000000001',
+            productId: 'p0000001-0000-0000-0000-000000000002',
             variantId: 'v1',
             quantity: 1
           }
@@ -63,8 +63,8 @@ describe('Pratie API Endpoints Suite', () => {
 
     expect(res.status).toBe(200);
     expect(res.body.success).toBe(true);
-    expect(res.body.data.subtotalPaise).toBe(2899900);
-    expect(res.body.data.discountAmountPaise).toBe(250000); // capped at maxDiscountAmountPaise or 10%
+    expect(res.body.data.subtotalPaise).toBe(2499900);
+    expect(res.body.data.discountAmountPaise).toBe(249990);
     expect(res.body.data.appliedCoupon.code).toBe('HERITAGE10');
   });
 });

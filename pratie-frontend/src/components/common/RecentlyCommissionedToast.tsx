@@ -11,7 +11,7 @@ const RECENT_ORDERS = [
     city: 'South Delhi',
     attire: 'Kashi Kadwa Real Zari Saree',
     time: '2 mins ago',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=150&q=80',
+    image: '/images/products/mithila-handpainted-tussar-silk-saree.jpeg',
     link: '/products?clothingType=Saree'
   },
   {
@@ -35,7 +35,7 @@ const RECENT_ORDERS = [
     city: 'Jaipur',
     attire: 'Mithila Handpainted Tussar Saree',
     time: '18 mins ago',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=150&q=80',
+    image: '/images/products/mithila-handpainted-tussar-silk-saree.jpeg',
     link: '/products?state=Bihar'
   }
 ];

@@ -29,7 +29,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
 
   const primaryImage =
     product.media[0]?.imageUrl ||
-    'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=80';
+    '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
 
   const handleAdd = () => {
     addToCart(product, selectedVariant, quantity);

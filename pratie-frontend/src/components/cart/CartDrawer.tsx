@@ -62,7 +62,7 @@ export const CartDrawer: React.FC = () => {
             ) : (
               items.map((item) => {
                 const itemPrice = item.product.basePricePaise + (item.variant.additionalPricePaise || 0);
-                const img = item.product.media[0]?.imageUrl || 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80';
+                const img = item.product.media[0]?.imageUrl || '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
 
                 return (
                   <div key={item.id} className="py-5 flex gap-4">
