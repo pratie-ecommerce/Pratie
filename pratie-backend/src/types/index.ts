@@ -237,7 +237,14 @@ export const CreateOrderSchema = z.object({
   paymentMethod: z.enum(['razorpay', 'cod', 'upi', 'card', 'netbanking']).default('razorpay'),
   guestEmail: z.string().email().optional(),
   guestPhone: z.string().optional(),
-  notes: z.string().optional()
+  notes: z.string().optional(),
+  items: z.array(
+    z.object({
+      productId: z.string().min(1),
+      variantId: z.string().min(1),
+      quantity: z.number().int().positive().default(1)
+    })
+  ).optional()
 });
 
 export const RazorpayVerifySchema = z.object({

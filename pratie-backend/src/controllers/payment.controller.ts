@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { dbStore } from '../db/store.js';
 import { paymentService } from '../services/payment.service.js';
 import { OrderService } from '../services/order.service.js';
+import { WhatsAppNotificationService } from '../services/whatsapp.service.js';
 
 export const verifyRazorpayPayment = async (req: Request, res: Response): Promise<void> => {
   const { orderId, razorpayOrderId, razorpayPaymentId, razorpaySignature } = req.body;
@@ -29,11 +30,15 @@ export const verifyRazorpayPayment = async (req: Request, res: Response): Promis
   // Deduct inventory
   OrderService.deductInventoryStock(order);
 
+  // Dispatch WhatsApp notification to team
+  const waResult = await WhatsAppNotificationService.sendOrderNotification(order);
+
   res.json({
     success: true,
     message: 'Payment verified and order confirmed',
     data: {
-      order
+      order,
+      whatsapp: waResult
     }
   });
 };

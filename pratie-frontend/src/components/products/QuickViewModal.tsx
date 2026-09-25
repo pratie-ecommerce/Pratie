@@ -71,8 +71,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
             <h2 className="font-editorial text-xl font-bold text-slate-900 mb-2">
               {product.title}
             </h2>
-            <div className="text-xl font-extrabold text-slate-900 mb-4">
-              {formatPaise(product.basePricePaise + (selectedVariant.additionalPricePaise || 0))}
+            <div className="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-md inline-flex items-center gap-1.5 mb-4">
+              <span>✦ Silk Mark Certified Handloom</span>
             </div>
 
             <p className="text-xs text-slate-600 leading-relaxed mb-6 font-normal">

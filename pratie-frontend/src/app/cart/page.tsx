@@ -66,7 +66,7 @@ export default function CartPage() {
                 item.product.basePricePaise + (item.variant.additionalPricePaise || 0);
               const img =
                 item.product.media[0]?.imageUrl ||
-                'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80';
+                '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
 
               return (
                 <div key={item.id} className="p-6 flex flex-col sm:flex-row gap-6 items-start">
@@ -126,8 +126,8 @@ export default function CartPage() {
                         </button>
                       </div>
 
-                      <span className="font-editorial text-lg font-bold text-slate-900">
-                        {formatPaise(itemPrice * item.quantity)}
+                      <span className="text-xs uppercase font-extrabold tracking-wider text-amber-800 bg-amber-50 px-3 py-1.5 rounded-lg border border-amber-200/80">
+                        Price on Request
                       </span>
                     </div>
                   </div>
@@ -140,83 +140,38 @@ export default function CartPage() {
         {/* Order Summary Box */}
         <div className="bg-white border border-amber-200/90 rounded-2xl p-6 space-y-6 shadow-sm">
           <h2 className="font-editorial text-xl font-bold text-slate-900 pb-4 border-b border-slate-100">
-            Order Summary
+            Selection Summary
           </h2>
 
-          {/* Coupon Code Engine */}
-          <div>
-            <label className="block text-xs uppercase tracking-wider font-bold text-slate-700 mb-2">
-              Privilege / Promo Voucher
-            </label>
-            {appliedCoupon ? (
-              <div className="flex items-center justify-between p-3 bg-amber-50 border border-amber-300 text-xs text-slate-900 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <Tag size={15} className="text-amber-700" />
-                  <span className="font-bold text-amber-800">{appliedCoupon.code}</span>
-                  <span className="text-emerald-700 font-bold">(-{formatPaise(discountPaise)})</span>
-                </div>
-                <button
-                  onClick={removeCoupon}
-                  className="text-xs text-rose-600 hover:underline font-bold cursor-pointer"
-                >
-                  Remove
-                </button>
-              </div>
-            ) : (
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={couponInput}
-                  onChange={(e) => setCouponInput(e.target.value)}
-                  placeholder="e.g. HERITAGE10"
-                  className="w-full bg-slate-50 text-xs text-slate-900 p-3 border border-slate-300 rounded-lg uppercase focus:outline-none focus:ring-2 focus:ring-amber-500"
-                />
-                <button
-                  onClick={() => {
-                    if (applyCoupon(couponInput)) {
-                      setCouponInput('');
-                    }
-                  }}
-                  className="bg-gradient-to-r from-amber-600 to-rose-600 text-white text-xs font-bold px-5 uppercase tracking-wider rounded-lg hover:shadow-md transition-all cursor-pointer"
-                >
-                  Apply
-                </button>
-              </div>
-            )}
-            <p className="text-[10.5px] text-slate-500 mt-2 font-medium">
-              Available vouchers: <span className="font-mono text-amber-700 font-bold">HERITAGE10</span> (10% off) or <span className="font-mono text-rose-600 font-bold">PRATIEVIP</span> (20% off)
+          <div className="p-3.5 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs text-amber-950 space-y-1">
+            <span className="font-bold block uppercase tracking-wider text-[10.5px] text-amber-900">
+              ✦ Backend Pricing Architecture
+            </span>
+            <p className="text-[11px] text-amber-900/80 font-normal">
+              Product valuations and live rates will be supplied directly from the backend atelier upon inquiry.
             </p>
           </div>
 
           {/* Breakdown */}
-          <div className="space-y-3 pt-4 border-t border-slate-100 text-xs text-slate-700">
+          <div className="space-y-3 pt-2 text-xs text-slate-700">
             <div className="flex justify-between font-medium">
-              <span>Bag Subtotal</span>
-              <span className="font-bold text-slate-900">{formatPaise(subtotalPaise)}</span>
-            </div>
-
-            {discountPaise > 0 && (
-              <div className="flex justify-between text-emerald-700 font-bold">
-                <span>Voucher Privilege Discount</span>
-                <span>-{formatPaise(discountPaise)}</span>
-              </div>
-            )}
-
-            <div className="flex justify-between font-medium">
-              <span>Estimated GST (18%)</span>
-              <span className="font-bold text-slate-900">{formatPaise(taxPaise)}</span>
+              <span>Total Selected Attires</span>
+              <span className="font-bold text-slate-900">{itemCount} {itemCount === 1 ? 'Creation' : 'Creations'}</span>
             </div>
 
             <div className="flex justify-between font-medium">
               <span>Insured White-Glove Courier</span>
-              <span className="font-bold text-slate-900">
-                {shippingPaise === 0 ? <span className="text-emerald-700 font-bold">Complimentary</span> : formatPaise(shippingPaise)}
-              </span>
+              <span className="text-emerald-700 font-bold">Complimentary (Pan-India)</span>
             </div>
 
-            <div className="flex justify-between pt-4 border-t border-slate-200 text-base font-bold text-slate-900">
-              <span>Grand Total</span>
-              <span className="font-editorial text-2xl font-extrabold text-slate-950">{formatPaise(totalPaise)}</span>
+            <div className="flex justify-between font-medium">
+              <span>Authenticity Certification</span>
+              <span className="text-emerald-700 font-bold">Silk Mark &amp; GI Tag Verified</span>
+            </div>
+
+            <div className="flex justify-between pt-4 border-t border-slate-200 text-sm font-bold text-slate-900">
+              <span>Pricing Valuation</span>
+              <span className="font-editorial text-base font-extrabold text-[#881337]">Bespoke / On Request</span>
             </div>
           </div>
 
@@ -224,13 +179,13 @@ export default function CartPage() {
             href="/checkout"
             className="w-full bg-gradient-to-r from-amber-600 via-rose-600 to-rose-700 hover:from-amber-700 hover:to-rose-800 text-white text-xs font-bold py-4 uppercase tracking-[0.25em] flex items-center justify-center gap-2 rounded-xl transition-all shadow-lg hover:shadow-xl cursor-pointer"
           >
-            <span>Proceed to Checkout</span>
+            <span>Proceed to Reservation</span>
             <ArrowRight size={16} />
           </Link>
 
           <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 font-medium">
             <ShieldCheck size={15} className="text-emerald-600" />
-            <span>End-to-End Encrypted Financial Security</span>
+            <span>Guaranteed Masterpiece Provenance</span>
           </div>
         </div>
       </div>

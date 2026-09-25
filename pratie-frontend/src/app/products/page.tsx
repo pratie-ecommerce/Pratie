@@ -522,11 +522,8 @@ function ProductsContent() {
                 className="bg-[#faf8f5] text-xs text-slate-900 font-bold px-3.5 py-2 border border-[#e5d9c5] rounded-full focus:outline-none focus:border-[#4a0d18] shadow-2xs cursor-pointer"
               >
                 <option value="featured">Featured Masterpieces</option>
-                <option value="price_asc">Price: Low to High</option>
-                <option value="price_desc">Price: High to Low</option>
                 <option value="newest">Newest Additions</option>
                 <option value="rating">Highest Rated</option>
-                <option value="discount">Highest Discount</option>
               </select>
             </div>
           </div>
@@ -912,64 +909,7 @@ function ProductsContent() {
               )}
             </div>
 
-            {/* Accordion 6: Price Range & Brackets */}
-            <div className="border-b border-slate-100 pb-4">
-              <button
-                onClick={() => toggleSection('price')}
-                className="flex items-center justify-between w-full text-xs uppercase font-extrabold tracking-wider text-slate-900 cursor-pointer mb-2"
-              >
-                <span>Price (₹)</span>
-                {openSections.price ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-              </button>
-              {openSections.price && (
-                <div className="space-y-2 pt-1 text-xs">
-                  {/* Preset Brackets */}
-                  <div className="space-y-1">
-                    {PRICE_BRACKETS.map((br, idx) => {
-                      const isSelected = selectedPriceBracket === idx;
-                      return (
-                        <button
-                          key={br.label}
-                          onClick={() => setSelectedPriceBracket(isSelected ? null : idx)}
-                          className={`flex items-center gap-2 w-full text-left py-1 px-2 rounded cursor-pointer transition-colors ${
-                            isSelected ? 'font-bold text-[#4a0d18] bg-amber-50' : 'text-slate-600 hover:text-slate-900'
-                          }`}
-                        >
-                          <div className={`w-3.5 h-3.5 rounded border flex items-center justify-center ${
-                            isSelected ? 'bg-[#4a0d18] border-[#4a0d18]' : 'border-slate-300'
-                          }`}>
-                            {isSelected && <Check size={10} className="text-white" />}
-                          </div>
-                          <span>{br.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
 
-                  {/* Manual Slider */}
-                  <div className="pt-2 border-t border-slate-100">
-                    <div className="flex justify-between items-center mb-1 text-[11px]">
-                      <span className="text-slate-500">Up to:</span>
-                      <span className="font-bold text-slate-900">
-                        ₹{(maxPriceFilter / 100).toLocaleString('en-IN')}
-                      </span>
-                    </div>
-                    <input
-                      type="range"
-                      min="1000000"
-                      max="10000000"
-                      step="500000"
-                      value={maxPriceFilter}
-                      onChange={(e) => {
-                        setSelectedPriceBracket(null);
-                        setMaxPriceFilter(Number(e.target.value));
-                      }}
-                      className="w-full accent-[#4a0d18] cursor-pointer"
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
 
             {/* Accordion 7: Color Palette */}
             <div className="border-b border-slate-100 pb-4">
@@ -1086,8 +1026,8 @@ function ProductsContent() {
                     : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-7'
                 }
               >
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+                {filteredProducts.map((product, idx) => (
+                  <ProductCard key={`${product.id}-${idx}`} product={product} />
                 ))}
               </div>
             )}
@@ -1168,23 +1108,7 @@ function ProductsContent() {
                 </div>
               </div>
 
-              {/* Price Brackets */}
-              <div className="pt-3 border-t border-slate-100">
-                <h4 className="font-bold text-slate-900 uppercase tracking-wider mb-2">Price Range</h4>
-                <div className="space-y-1">
-                  {PRICE_BRACKETS.map((br, idx) => (
-                    <button
-                      key={br.label}
-                      onClick={() => setSelectedPriceBracket(selectedPriceBracket === idx ? null : idx)}
-                      className={`block w-full text-left py-1 px-2 rounded ${
-                        selectedPriceBracket === idx ? 'font-bold text-[#4a0d18] bg-amber-50' : 'text-slate-700'
-                      }`}
-                    >
-                      {br.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
+
 
               {/* Certifications */}
               <div className="pt-3 border-t border-slate-100 space-y-2">

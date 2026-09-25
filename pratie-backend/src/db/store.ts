@@ -1,5 +1,25 @@
+import fs from 'fs';
+import path from 'path';
 import { Product, Coupon, Order, CartItem, User, Review } from '../types/index.js';
-import productsData from '../data/products.json';
+
+const loadProducts = (): Product[] => {
+  try {
+    const candidates = [
+      path.resolve(__dirname, '../data/products.json'),
+      path.resolve(process.cwd(), 'src/data/products.json'),
+      path.resolve(process.cwd(), 'pratie-backend/src/data/products.json')
+    ];
+    for (const file of candidates) {
+      if (fs.existsSync(file)) {
+        return JSON.parse(fs.readFileSync(file, 'utf8'));
+      }
+    }
+    return [];
+  } catch (err) {
+    console.error('Failed to load products.json in DataStore:', err);
+    return [];
+  }
+};
 
 class DataStore {
   public users: User[] = [
@@ -29,7 +49,7 @@ class DataStore {
     }
   ];
 
-  public products: Product[] = productsData as unknown as Product[];
+  public products: Product[] = loadProducts();
 
   public coupons: Coupon[] = [
     {
@@ -117,7 +137,7 @@ class DataStore {
           unitPricePaise: 2499900,
           quantity: 1,
           totalPricePaise: 2499900,
-          imageUrl: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85'
+          imageUrl: '/images/products/mithila-handpainted-tussar-silk-saree.jpeg'
         }
       ],
       createdAt: '2026-02-01T14:20:00Z',

@@ -166,7 +166,7 @@ export const Footer: React.FC = () => {
             Join Pratiè Privé Circle
           </div>
           <p className="text-xs text-slate-600 mt-0.5">
-            Receive ₹1,500 off your first bespoke handloom commission &amp; private festive drop previews.
+            Receive exclusive bespoke handloom updates &amp; private artisanal drop previews.
           </p>
         </div>
 

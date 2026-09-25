@@ -143,14 +143,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Floating Provenance Seal on Slide (Desktop) */}
-          <div className="hidden lg:flex absolute bottom-12 right-12 z-20 items-center gap-3.5 bg-black/60 backdrop-blur-xl border border-amber-400/40 px-5 py-3 rounded-2xl shadow-2xl text-left pointer-events-none">
-            <div className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
-            <div>
-              <div className="text-[9.5px] uppercase font-bold text-amber-300 tracking-[0.2em]">{currentSlide.cluster}</div>
-              <div className="text-xs font-heading font-semibold text-white mt-0.5">{currentSlide.craft} • {currentSlide.artisanHours}</div>
-            </div>
-          </div>
+
 
           {/* Editorial Numeric Slide Counter (Desktop) */}
           <div className="hidden lg:flex absolute bottom-12 left-12 z-20 items-center gap-3 text-white/80 font-mono text-xs">
@@ -320,8 +313,8 @@ export default function HomePage() {
 
         {/* 4-Column Product Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {showcaseProducts.map((p) => (
-            <ProductCard key={p.id} product={p} />
+          {showcaseProducts.map((p, idx) => (
+            <ProductCard key={`${p.id}-${idx}`} product={p} />
           ))}
         </div>
 
@@ -337,7 +330,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. FESTIVE PRIVILEGE VOUCHER BANNER */}
+      {/* 4. FESTIVE PRIVILEGE VOUCHER BANNER - Temporarily hidden per user request */}
+      {/*
       <section className="max-w-7xl mx-auto px-6 w-full">
         <div className="bg-gradient-to-r from-[#4a0d18] via-rose-900 to-amber-900 rounded-3xl p-6 sm:p-8 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-amber-500/20">
           <div className="text-center md:text-left">
@@ -366,6 +360,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* 5. SHOP BY OCCASION (EDITORIAL MINIMALISM) */}
       <section className="max-w-7xl mx-auto px-6 w-full">
@@ -483,7 +478,8 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* 33 States Matrix Title & Region Tabs */}
+        {/* 33 States Matrix - Temporarily hidden per user request */}
+        {/*
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-slate-200 gap-4">
           <div>
             <div className="text-amber-800 text-[11px] font-bold uppercase tracking-[0.2em] mb-1">
@@ -497,7 +493,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Regional Selector Tabs */}
           <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none max-w-full">
             {REGIONS_LIST.map((reg) => (
               <button
@@ -520,7 +515,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Clean, Visual-First States Grid (No paragraph clutter) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {filteredStates.map((st: StateCraft) => {
             const isBihar = st.name.toLowerCase() === 'bihar';
@@ -600,7 +594,7 @@ export default function HomePage() {
                     <span className="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-slate-200 border border-white/20">
                       {st.region}
                     </span>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-amber-300 text-[9.5px] font-bold uppercase border border-amber-400/30">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-amber-300 text-[9.5px] font-bold uppercase border border-amber-400/30">
                       <Clock size={10} className="text-amber-400" />
                       <span>Soon</span>
                     </span>
@@ -635,6 +629,7 @@ export default function HomePage() {
             );
           })}
         </div>
+        */}
       </section>
 
       {/* 7. THE PRATIÈ CHARTER */}

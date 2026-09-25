@@ -65,11 +65,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
           {/* Floating Badges */}
           <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 flex flex-col gap-1 z-10">
-            {discountPercent && (
-              <span className="badge-discount text-[8px] sm:text-[9.5px] px-1.5 py-0.5 sm:px-2 sm:py-0.5 shadow-xs">
-                {discountPercent}% OFF
-              </span>
-            )}
             {product.state && (
               <span className="bg-pink-600 text-white text-[8px] sm:text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 sm:px-2 rounded shadow-xs flex items-center gap-1">
                 <MapPin size={9} className="hidden sm:inline" />
@@ -135,23 +130,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <p className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 line-clamp-1 font-normal">
               {product.fabric || product.shortDescription}
             </p>
-          </div>
-
-          <div className="mt-2 sm:mt-3 pt-2 sm:pt-2.5 border-t border-slate-100 flex items-baseline justify-between gap-1">
-            <div className="flex items-baseline gap-1">
-              <span className="text-xs sm:text-sm font-extrabold text-slate-900 font-sans">
-                {formatPaise(product.basePricePaise)}
-              </span>
-              {product.compareAtPricePaise && (
-                <span className="hidden sm:inline text-[10px] sm:text-[11px] text-slate-400 line-through font-sans">
-                  {formatPaise(product.compareAtPricePaise)}
-                </span>
-              )}
-            </div>
-
-            <span className="text-[7px] sm:text-[8.5px] uppercase font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-1 sm:px-1.5 py-0.5 rounded shrink-0">
-              Silk Mark
-            </span>
           </div>
         </div>
       </div>

@@ -112,8 +112,8 @@ export const CartDrawer: React.FC = () => {
                           </button>
                         </div>
 
-                        <span className="text-xs font-extrabold text-amber-800">
-                          {formatPaise(itemPrice * item.quantity)}
+                        <span className="text-[10px] uppercase font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                          Silk Mark
                         </span>
                       </div>
                     </div>
@@ -127,11 +127,11 @@ export const CartDrawer: React.FC = () => {
           {items.length > 0 && (
             <div className="p-6 border-t border-amber-200 bg-slate-50">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Subtotal</span>
-                <span className="font-editorial text-xl font-bold text-slate-900">{formatPaise(subtotalPaise)}</span>
+                <span className="text-xs uppercase tracking-widest text-slate-500 font-semibold">Total Selection</span>
+                <span className="font-editorial text-sm font-bold text-slate-900">{itemCount} {itemCount === 1 ? 'Attire Piece' : 'Attire Pieces'}</span>
               </div>
               <p className="text-[10px] text-slate-500 mb-5">
-                GST and complimentary priority shipping calculated at checkout.
+                Complimentary insured delivery &amp; certificate of authenticity included.
               </p>
 
               <Link

@@ -66,7 +66,7 @@ export const Navbar: React.FC = () => {
         <div className="mx-auto flex items-center gap-2 text-center">
           <span className="text-white/90">Complimentary Pan-India Delivery</span>
           <span className="text-amber-400/50">•</span>
-          <span className="text-amber-300 font-semibold">15% Off With Code FESTIVE15</span>
+          <span className="text-amber-300 font-semibold">100% Authentic Handloom Purity</span>
         </div>
 
         <div className="hidden lg:flex items-center gap-3 text-pink-200/70 text-[9.5px]">
@@ -138,7 +138,8 @@ export const Navbar: React.FC = () => {
               <Search size={20} />
             </Link>
 
-            {/* Account */}
+            {/* Account / Login - Temporarily hidden per user request */}
+            {/* 
             <Link
               href={user ? '/account/orders' : '/account/login'}
               className="p-2 text-slate-700 hover:text-pink-600 hover:bg-slate-50 rounded-full transition-colors hidden sm:flex items-center gap-1.5 cursor-pointer"
@@ -149,6 +150,7 @@ export const Navbar: React.FC = () => {
                 {user ? 'Account' : 'Login'}
               </span>
             </Link>
+            */}
 
             {/* Wishlist */}
             <Link
@@ -174,11 +176,6 @@ export const Navbar: React.FC = () => {
               <span className="text-xs font-bold font-sans">
                 {itemCount}
               </span>
-              {subtotalPaise > 0 && (
-                <span className="hidden sm:inline text-[11px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
-                  {formatPaise(subtotalPaise)}
-                </span>
-              )}
             </button>
           </div>
         </div>
@@ -434,11 +431,6 @@ export const Navbar: React.FC = () => {
           {/* Ready to Ship */}
           <Link href="/products?sort=popular" className="py-3 hover:text-pink-700 transition-colors">
             Ready To Ship
-          </Link>
-
-          {/* Offers */}
-          <Link href="/products" className="py-3 text-rose-700 hover:text-rose-800 transition-colors font-extrabold">
-            Festive Offers
           </Link>
         </div>
       </nav>

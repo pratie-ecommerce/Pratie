@@ -1,64 +1,58 @@
 // Iconic Weave Story Capsules
 export const ICONIC_WEAVES = [
   {
-    title: 'Banarasi',
-    state: 'Uttar Pradesh',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Banarasi'
-  },
-  {
-    title: 'Kanjeevaram',
-    state: 'Tamil Nadu',
-    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Kanjeevaram'
-  },
-  {
     title: 'Mithila Haat',
     state: 'Bihar',
     image: '/images/products/mithila-handpainted-tussar-silk-saree.jpeg',
     link: '/products?search=Mithila'
   },
   {
-    title: 'Chikankari',
-    state: 'Uttar Pradesh',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Chikankari'
+    title: 'Haldi Tussar',
+    state: 'Bihar',
+    image: '/images/products/mithila-haldi-yellow-tussar-saree.jpeg',
+    link: '/products?search=Haldi'
   },
   {
-    title: 'Kasavu',
-    state: 'Kerala',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Kasavu'
+    title: 'Indigo Heritage',
+    state: 'Bihar',
+    image: '/images/products/mithila-indigo-tussar-silk-saree.jpeg',
+    link: '/products?search=Indigo'
   },
   {
-    title: 'Chanderi',
-    state: 'Madhya Pradesh',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Chanderi'
+    title: 'Crimson Organza',
+    state: 'Varanasi',
+    image: '/images/products/mithila-emerald-crimson-silk-saree.jpeg',
+    link: '/products?search=Crimson'
   },
   {
-    title: 'Patan Patola',
-    state: 'Gujarat',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Patola'
+    title: 'Cotton Saree',
+    state: 'Odisha',
+    image: '/images/products/odisha-berhampuri-double-pata-silk-saree.jpeg',
+    link: '/products?search=Cotton+Saree'
   },
   {
-    title: 'Paithani',
-    state: 'Maharashtra',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Paithani'
-  },
-  {
-    title: 'Kalamkari',
+    title: 'Tussar Kalamkari',
     state: 'Andhra Pradesh',
-    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Kalamkari'
+    image: '/images/products/srikalahasti-kalamkari-pure-silk-saree.jpeg',
+    link: '/products?search=Tussar'
   },
   {
-    title: 'Pochampally',
-    state: 'Telangana',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80',
-    link: '/products?search=Pochampally'
+    title: 'Cotton Suit',
+    state: 'Rajasthan',
+    image: '/images/products/machilipatnam-kalamkari-chanderi-suit.jpeg',
+    link: '/products?search=Cotton+Suit'
+  },
+  {
+    title: 'Chiffon Organza',
+    state: 'Arunachal Pradesh',
+    image: '/images/products/arunachal-mechuka-valley-eri-silk-saree.jpeg',
+    link: '/products?search=Chiffon'
+  },
+  {
+    title: 'The Indian Edit',
+    state: 'Pan India',
+    image: '/images/products/cotton-suit-the-indian-edit.jpeg',
+    link: '/products?search=The+Indian+Edit'
   }
 ];
 
@@ -75,8 +69,7 @@ export const HERO_SLIDES = [
     primaryCtaLink: '#weaves-matrix',
     secondaryCtaText: 'Shop Sarees',
     secondaryCtaLink: '/products?clothingType=Saree',
-    image:
-      '/images/products/mithila-handpainted-tussar-silk-saree.jpeg',
+    image: '/images/products/mithila-handpainted-tussar-silk-saree.jpeg',
     featuredCraft: 'Silk Mark Certified Archive',
     cluster: 'Mithila • Bihar',
     craft: 'Handpainted Bhagalpuri Tussar',
@@ -93,8 +86,7 @@ export const HERO_SLIDES = [
     primaryCtaLink: '/products?clothingType=Saree',
     secondaryCtaText: 'The Banarasi Edit',
     secondaryCtaLink: '/products?search=Banarasi',
-    image:
-      'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1800&q=90',
+    image: '/images/products/mithila-indigo-tussar-silk-saree.jpeg',
     featuredCraft: 'Tested Real Zari 3-Ply Silk',
     cluster: 'Varanasi • Uttar Pradesh',
     craft: 'Kadwa Real Gold Zari Silk',
@@ -109,10 +101,9 @@ export const HERO_SLIDES = [
       'Delicate gossamer shadow work preserving historical stitches, metallic Mukaish, and pure velvet kurtas.',
     primaryCtaText: 'Shop Royal Ensembles',
     primaryCtaLink: '/products?clothingType=Suit',
-    secondaryCtaText: 'Explore Chikankari',
-    secondaryCtaLink: '/products?search=Chikankari',
-    image:
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1800&q=90',
+    secondaryCtaText: 'Explore Suits',
+    secondaryCtaLink: '/products?search=Cotton+Suit',
+    image: '/images/products/cotton-suit-the-indian-edit.jpeg',
     featuredCraft: 'Artisan Needlecraft',
     cluster: 'Lucknow • Awadh',
     craft: 'Awadhi 32-Stitch Mukaish',
@@ -129,8 +120,7 @@ export const HERO_SLIDES = [
     primaryCtaLink: '/products?state=Assam',
     secondaryCtaText: 'Mithila Handpainted',
     secondaryCtaLink: '/products?state=Bihar',
-    image:
-      '/images/products/mithila-haldi-yellow-tussar-saree.jpeg',
+    image: '/images/products/mithila-haldi-yellow-tussar-saree.jpeg',
     featuredCraft: 'Ethical Wild Silks',
     cluster: 'Sualkuchi • Assam',
     craft: 'Wild Muga & Ahimsa Silk',
@@ -148,7 +138,7 @@ export const OCCASIONS_DATA = [
     count: '14 Heirloom Silks',
     search: 'Bridal',
     href: '/products?search=Bridal',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=90'
+    image: '/images/products/mithila-emerald-crimson-silk-saree.jpeg'
   },
   {
     id: 'sangeet',
@@ -158,7 +148,7 @@ export const OCCASIONS_DATA = [
     count: '12 Ensembles',
     search: 'Sharara',
     href: '/products?search=Sharara',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=90'
+    image: '/images/products/machilipatnam-kalamkari-chanderi-suit.jpeg'
   },
   {
     id: 'pooja',
@@ -168,7 +158,7 @@ export const OCCASIONS_DATA = [
     count: '10 Sacred Weaves',
     search: 'Kasavu',
     href: '/products?search=Kasavu',
-    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=90'
+    image: '/images/products/odisha-berhampuri-double-pata-silk-saree.jpeg'
   },
   {
     id: 'cocktail',
@@ -178,6 +168,6 @@ export const OCCASIONS_DATA = [
     count: '10 Masterpieces',
     search: 'Chanderi',
     href: '/products?search=Chanderi',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=800&q=90'
+    image: '/images/products/arunachal-mechuka-valley-eri-silk-saree.jpeg'
   }
 ];

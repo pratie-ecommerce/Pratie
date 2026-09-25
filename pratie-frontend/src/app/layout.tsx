@@ -6,7 +6,6 @@ import { CartDrawer } from '../components/cart/CartDrawer';
 import { AuthProvider } from '../context/AuthContext';
 import { CartProvider } from '../context/CartContext';
 import { WishlistProvider } from '../context/WishlistContext';
-import { ConciergeWidget } from '../components/common/ConciergeWidget';
 import { BottomNav } from '../components/layout/BottomNav';
 import { RecentlyCommissionedToast } from '../components/common/RecentlyCommissionedToast';
 import { Toaster } from 'sonner';
@@ -43,7 +42,6 @@ export default function RootLayout({
               <CartDrawer />
               <BottomNav />
               <RecentlyCommissionedToast />
-              <ConciergeWidget />
               <Toaster position="top-right" richColors />
             </WishlistProvider>
           </CartProvider>

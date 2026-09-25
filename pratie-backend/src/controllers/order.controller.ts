@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { dbStore } from '../db/store.js';
 import { OrderService } from '../services/order.service.js';
 import { paymentService } from '../services/payment.service.js';
+import { WhatsAppNotificationService } from '../services/whatsapp.service.js';
 import { Order, OrderItem } from '../types/index.js';
 
 export const calculateCheckoutTotals = async (req: Request, res: Response): Promise<void> => {
@@ -164,12 +165,16 @@ export const createOrder = async (req: Request, res: Response): Promise<void> =>
     dbStore.cartItems = dbStore.cartItems.filter((it) => it.userId !== userId);
   }
 
+  // Dispatch automated WhatsApp notification to team group
+  const waResult = await WhatsAppNotificationService.sendOrderNotification(newOrder);
+
   res.status(201).json({
     success: true,
     message: 'Order initiated successfully',
     data: {
       order: newOrder,
-      razorpayOrder: razorpayOrderData
+      razorpayOrder: razorpayOrderData,
+      whatsapp: { delivered: waResult.success }
     }
   });
 };

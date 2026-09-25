@@ -154,7 +154,19 @@ export const getProducts = async (req: Request, res: Response): Promise<void> =>
 
 export const getProductBySlug = async (req: Request, res: Response): Promise<void> => {
   const { slug } = req.params;
-  const product = dbStore.products.find((p) => p.slug === slug || p.id === slug);
+  const product = dbStore.products.find(
+    (p) =>
+      p.slug === slug ||
+      p.id === slug ||
+      (p.id === 'p0000001-0000-0000-0000-000000000013' &&
+        (slug === 'tarakasi-silver-filigree-minaudiere-evening-clutch' || slug === 'odisha-berhampuri-double-pata-silk-saree')) ||
+      (p.id === 'p0000001-0000-0000-0000-000000000021' &&
+        slug === 'srikalahasti-freehand-kalamkari-pure-silk-saree') ||
+      (p.id === 'p0000001-0000-0000-0000-000000000023' &&
+        (slug === 'apatani-tribal-geometric-handloom-wrap-shawl' || slug === 'arunachal-mechuka-valley-handwoven-organic-eri-silk-saree')) ||
+      (p.id === 'p0000001-0000-0000-0000-000000000022' &&
+        slug === 'machilipatnam-kalamkari-handblock-chanderi-silk-suit-set')
+  );
 
   if (!product) {
     res.status(404).json({ success: false, message: 'Product not found' });

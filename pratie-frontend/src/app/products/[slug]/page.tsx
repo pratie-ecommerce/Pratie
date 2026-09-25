@@ -167,7 +167,7 @@ export default function ProductDetailPage() {
   ).slice(0, 4);
 
   return (
-    <div className="bg-[#FAF8F5] min-h-screen text-slate-900 pb-20">
+    <div className="bg-[#FAF8F5] min-h-screen text-slate-900 pb-28 lg:pb-20">
       {/* Taneira-Style Breadcrumb Navigation */}
       <div className="border-b border-[#E8E1D7] bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center gap-2 text-[11px] uppercase tracking-wider text-stone-500 overflow-x-auto">
@@ -187,12 +187,12 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start mb-16">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 sm:pt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-start mb-16">
           {/* LEFT: Multi-Angle Thumbnail Strip + Main Zoom Viewer (Cols 1-7) */}
-          <div className="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4 items-start sticky top-24">
-            {/* Vertical Thumbnails */}
-            <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible pb-2 md:pb-0 w-full md:w-20 shrink-0">
+          <div className="lg:col-span-7 flex flex-col-reverse md:flex-row gap-3 sm:gap-4 items-start lg:sticky lg:top-36 relative w-full">
+            {/* Thumbnails */}
+            <div className="flex md:flex-col gap-2.5 sm:gap-3 overflow-x-auto md:overflow-visible pb-1 md:pb-0 w-full md:w-20 shrink-0 scrollbar-none">
               {galleryImages.map((img, idx) => (
                 <button
                   key={idx}
@@ -209,7 +209,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Main Interactive Magnifier Viewport */}
-            <div className="relative flex-1 w-full aspect-[3/4] bg-[#F5EFE6] border border-[#E8E1D7] rounded-xl overflow-hidden shadow-sm group">
+            <div className="relative flex-1 w-full aspect-[3/4] max-h-[68vh] sm:max-h-none bg-[#F5EFE6] border border-[#E8E1D7] rounded-xl overflow-hidden shadow-sm group">
               <div
                 className="w-full h-full relative cursor-crosshair overflow-hidden"
                 onMouseEnter={() => setIsHovered(true)}
@@ -260,8 +260,8 @@ export default function ProductDetailPage() {
                 />
               </button>
 
-              {/* Hover Zoom Hint */}
-              <div className="absolute bottom-3 right-3 bg-stone-900/60 backdrop-blur-xs text-white text-[10px] font-medium px-2.5 py-1 rounded-md pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
+              {/* Hover Zoom Hint (Desktop only) */}
+              <div className="hidden sm:block absolute bottom-3 right-3 bg-stone-900/60 backdrop-blur-xs text-white text-[10px] font-medium px-2.5 py-1 rounded-md pointer-events-none opacity-80 group-hover:opacity-100 transition-opacity">
                 Hover to Zoom Fabric
               </div>
             </div>
@@ -281,7 +281,7 @@ export default function ProductDetailPage() {
                 </span>
               </div>
 
-              <h1 className="font-editorial text-2xl sm:text-3xl font-bold text-stone-900 leading-tight mb-2">
+              <h1 className="font-editorial text-xl sm:text-3xl font-bold text-stone-900 leading-tight mb-2">
                 {product.title}
               </h1>
 
@@ -306,25 +306,14 @@ export default function ProductDetailPage() {
                 </span>
               </div>
 
-              {/* Price & Offers */}
+              {/* Authenticity & Commission Guarantee */}
               <div className="p-4 bg-stone-50/80 border border-[#E8E1D7] rounded-xl mb-4">
-                <div className="flex items-baseline gap-3 mb-1">
-                  <span className="text-2xl sm:text-3xl font-extrabold text-stone-900">
-                    {formatPaise(currentPricePaise)}
-                  </span>
-                  {product.compareAtPricePaise && product.compareAtPricePaise > product.basePricePaise && (
-                    <>
-                      <span className="text-sm text-stone-400 line-through">
-                        {formatPaise(product.compareAtPricePaise)}
-                      </span>
-                      <span className="text-xs font-bold text-[#881337] bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
-                        Save {formatPaise(product.compareAtPricePaise - product.basePricePaise)}
-                      </span>
-                    </>
-                  )}
+                <div className="flex items-center gap-2 mb-1 text-sm font-bold text-stone-900">
+                  <ShieldCheck size={16} className="text-amber-800" />
+                  <span>Bespoke Handloom Commission</span>
                 </div>
                 <p className="text-[11px] text-stone-500 font-normal">
-                  Inclusive of all taxes • Free Insured Delivery across India
+                  Authentic pitloom weave • Complimentary insured delivery across India
                 </p>
               </div>
             </div>
@@ -392,7 +381,7 @@ export default function ProductDetailPage() {
                       >
                         <div className="font-bold text-stone-900">Custom Tailored Blouse</div>
                         <div className="text-[10px] text-stone-500 mt-0.5">Lined with pure cotton mulmul</div>
-                        <div className="text-[11px] font-bold text-[#881337] mt-1">+₹1,499</div>
+                        <div className="text-[11px] font-bold text-amber-800 mt-1">Bespoke Stitching</div>
                       </button>
                     </div>
 
@@ -445,24 +434,33 @@ export default function ProductDetailPage() {
                       Size Chart (Inches & CM)
                     </span>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {['XS (34)', 'S (36)', 'M (38)', 'L (40)', 'XL (42)', 'XXL (44)'].map((s) => (
-                      <button
-                        key={s}
-                        type="button"
-                        onClick={() => setSelectedVariant({ id: s, size: s, stockQuantity: 5, sku: s, additionalPricePaise: 0 } as any)}
-                        className={`px-3 py-2 text-xs rounded-lg border font-semibold transition-all cursor-pointer ${
-                          selectedVariant?.size === s || (!selectedVariant && s === 'M (38)')
-                            ? 'bg-[#881337] text-white border-[#881337] shadow-sm'
-                            : 'bg-white text-stone-700 border-stone-200 hover:border-stone-400'
-                        }`}
-                      >
-                        {s}
-                      </button>
-                    ))}
+                  <div className="flex flex-wrap gap-2.5">
+                    {(product.variants && product.variants.length > 0 && product.variants.some((v) => v.size && ['S', 'M', 'L', 'XL'].includes(v.size))
+                      ? product.variants.map((v) => ({ label: v.size || 'M', variant: v }))
+                      : ['S', 'M', 'L', 'XL'].map((s) => ({
+                          label: s,
+                          variant: { id: s, size: s, stockQuantity: 5, sku: s, additionalPricePaise: 0 } as any
+                        }))
+                    ).map(({ label, variant }) => {
+                      const isSelected = selectedVariant?.size === label || (!selectedVariant && label === 'M');
+                      return (
+                        <button
+                          key={label}
+                          type="button"
+                          onClick={() => setSelectedVariant(variant)}
+                          className={`min-w-11 px-4 py-2 text-xs rounded-lg border font-bold transition-all cursor-pointer ${
+                            isSelected
+                              ? 'bg-[#881337] text-white border-[#881337] shadow-sm ring-2 ring-[#881337]/20 scale-102'
+                              : 'bg-white text-stone-700 border-stone-200 hover:border-stone-400'
+                          }`}
+                        >
+                          {label}
+                        </button>
+                      );
+                    })}
                   </div>
                   <p className="text-[11px] text-stone-500 font-normal mt-1">
-                    Set includes: Handloom Embroidered Kurta, Tailored Trousers, and 2.5m Matching Dupatta.
+                    Set includes: Pure Handloom Cotton Kurta, Tailored Trousers, and 2.5m Matching Dupatta (Sizes S, M, L, XL).
                   </p>
                 </div>
               )}
@@ -829,8 +827,8 @@ export default function ProductDetailPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedProducts.map((p) => (
-                <ProductCard key={p.id} product={p} />
+              {relatedProducts.map((p, idx) => (
+                <ProductCard key={`${p.id}-${idx}`} product={p} />
               ))}
             </div>
           </section>

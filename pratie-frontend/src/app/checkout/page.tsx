@@ -393,8 +393,8 @@ export default function CheckoutPage() {
                 <Lock size={16} />
                 <span>
                   {paymentMethod === 'razorpay'
-                    ? `Authorize Payment • ${formatPaise(totalPaise)}`
-                    : `Confirm VIP Order • ${formatPaise(totalPaise)}`}
+                    ? 'Confirm & Authorize Order Reservation'
+                    : 'Confirm VIP Order Reservation'}
                 </span>
               </button>
             </div>
@@ -417,7 +417,7 @@ export default function CheckoutPage() {
                   <Image
                     src={
                       it.product.media[0]?.imageUrl ||
-                      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80'
+                      '/images/products/mithila-handpainted-tussar-silk-saree.jpeg'
                     }
                     alt=""
                     fill
@@ -430,8 +430,8 @@ export default function CheckoutPage() {
                     Qty: {it.quantity} {it.variant.size && `• Size: ${it.variant.size}`}
                   </div>
                 </div>
-                <div className="text-xs font-extrabold text-slate-900">
-                  {formatPaise((it.product.basePricePaise + (it.variant.additionalPricePaise || 0)) * it.quantity)}
+                <div className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                  Price on Request
                 </div>
               </div>
             ))}
@@ -439,26 +439,20 @@ export default function CheckoutPage() {
 
           <div className="space-y-3 pt-4 border-t border-slate-100 text-xs text-slate-600">
             <div className="flex justify-between font-medium">
-              <span>Subtotal</span>
-              <span className="font-bold text-slate-900">{formatPaise(subtotalPaise)}</span>
-            </div>
-            {discountPaise > 0 && (
-              <div className="flex justify-between text-emerald-700 font-bold">
-                <span>Voucher Privilege ({appliedCoupon?.code})</span>
-                <span>-{formatPaise(discountPaise)}</span>
-              </div>
-            )}
-            <div className="flex justify-between font-medium">
-              <span>GST (18% Included)</span>
-              <span className="font-bold text-slate-900">{formatPaise(taxPaise)}</span>
+              <span>Curated Selection</span>
+              <span className="font-bold text-slate-900">{items.reduce((acc, it) => acc + it.quantity, 0)} Items</span>
             </div>
             <div className="flex justify-between font-medium">
               <span>Insured White-Glove Dispatch</span>
               <span className="text-emerald-700 font-bold">Complimentary</span>
             </div>
+            <div className="flex justify-between font-medium">
+              <span>Authenticity Certification</span>
+              <span className="text-emerald-700 font-bold">100% Silk / Handloom Mark Verified</span>
+            </div>
             <div className="flex justify-between pt-4 border-t border-slate-200 text-base font-bold text-slate-900">
-              <span className="text-xs uppercase tracking-widest font-bold text-slate-700">Total Payable</span>
-              <span className="font-editorial text-2xl font-extrabold text-slate-950">{formatPaise(totalPaise)}</span>
+              <span className="text-xs uppercase tracking-widest font-bold text-slate-700">Valuation Rate</span>
+              <span className="font-editorial text-lg font-extrabold text-[#881337]">Bespoke / On Request</span>
             </div>
           </div>
 
@@ -477,16 +471,16 @@ export default function CheckoutPage() {
             <div className="flex justify-between items-center pb-6 border-b border-slate-100 mb-6">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-r from-amber-600 to-rose-600 text-white font-extrabold flex items-center justify-center text-sm shadow-sm">
-                  ₹
+                  ✓
                 </div>
                 <div>
                   <span className="text-[10px] uppercase tracking-widest text-amber-800 block font-extrabold">
-                    Razorpay Gateway Simulator
+                    Order Reservation Gateway
                   </span>
                   <span className="font-editorial text-base font-bold text-slate-900">Atelier Pratiè</span>
                 </div>
               </div>
-              <span className="text-sm font-extrabold text-slate-950">{formatPaise(totalPaise)}</span>
+              <span className="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded border border-amber-200">VIP Reservation</span>
             </div>
 
             <p className="text-xs text-slate-600 mb-6 leading-relaxed font-normal">
