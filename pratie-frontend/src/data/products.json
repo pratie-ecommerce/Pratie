@@ -34,12 +34,20 @@
     "careInstructions": "Dry clean only by certified luxury heritage garment specialists",
     "media": [
       {
-        "id": "m1",
+        "id": "m1-1",
         "productId": "p0000001-0000-0000-0000-000000000001",
         "imageUrl": "/images/products/mithila-handpainted-tussar-silk-saree.jpeg",
         "altText": "Mithila Handpainted Tussar Silk Saree Draped Pallu",
         "displayOrder": 1,
         "isPrimary": true
+      },
+      {
+        "id": "m1-2",
+        "productId": "p0000001-0000-0000-0000-000000000001",
+        "imageUrl": "/images/products/mithila-handpainted-tussar-silk-saree-side-view.jpeg",
+        "altText": "Mithila Handpainted Tussar Silk Saree Seated Pallu View",
+        "displayOrder": 2,
+        "isPrimary": false
       }
     ],
     "variants": [

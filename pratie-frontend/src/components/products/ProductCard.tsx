@@ -26,6 +26,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     product.media?.[0]?.imageUrl ||
     '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
 
+  const secondaryImage =
+    product.media && product.media.length > 1
+      ? product.media.find((m) => !m.isPrimary)?.imageUrl || product.media[1]?.imageUrl
+      : null;
+
   const defaultVariant = product.variants?.[0];
   const isWishlisted = isInWishlist(product.id);
 
@@ -53,14 +58,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="ecom-card group relative flex flex-col overflow-hidden bg-white">
         {/* Media Container */}
         <div className="relative aspect-[3/4] w-full overflow-hidden bg-slate-100">
-          <Link href={`/products/${product.slug}`} className="block w-full h-full">
+          <Link href={`/products/${product.slug}`} className="block w-full h-full relative">
             <Image
               src={primaryImage}
               alt={product.title}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-105"
+              className={`object-cover transition-all duration-700 ${
+                secondaryImage
+                  ? 'group-hover:opacity-0 group-hover:scale-105'
+                  : 'group-hover:scale-105'
+              }`}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
             />
+            {secondaryImage && (
+              <Image
+                src={secondaryImage}
+                alt={`${product.title} - Alternative View`}
+                fill
+                className="object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+            )}
           </Link>
 
           {/* Floating Badges */}

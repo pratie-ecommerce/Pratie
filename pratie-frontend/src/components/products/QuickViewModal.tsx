@@ -27,9 +27,14 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
   );
   const [quantity, setQuantity] = useState(1);
 
-  const primaryImage =
-    product.media[0]?.imageUrl ||
-    '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
+  const [selectedImgIdx, setSelectedImgIdx] = useState(0);
+
+  const images =
+    product.media && product.media.length > 0
+      ? product.media.map((m) => m.imageUrl)
+      : ['/images/products/mithila-handpainted-tussar-silk-saree.jpeg'];
+
+  const activeImage = images[selectedImgIdx] || images[0];
 
   const handleAdd = () => {
     addToCart(product, selectedVariant, quantity);
@@ -51,14 +56,29 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
         </button>
 
         {/* Media */}
-        <div className="relative aspect-[3/4] md:aspect-auto h-72 md:h-full bg-slate-100">
+        <div className="relative aspect-[3/4] md:aspect-auto h-72 md:h-full bg-slate-100 flex flex-col justify-end">
           <Image
-            src={primaryImage}
+            src={activeImage}
             alt={product.title}
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
           />
+          {images.length > 1 && (
+            <div className="absolute bottom-3 left-3 right-3 flex items-center justify-center gap-2 z-10 bg-black/40 backdrop-blur-xs p-1.5 rounded-xl">
+              {images.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedImgIdx(idx)}
+                  className={`relative w-12 h-14 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                    selectedImgIdx === idx ? 'border-amber-400 scale-105 shadow-md' : 'border-white/60 opacity-70 hover:opacity-100'
+                  }`}
+                >
+                  <Image src={img} alt="" fill className="object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Details */}

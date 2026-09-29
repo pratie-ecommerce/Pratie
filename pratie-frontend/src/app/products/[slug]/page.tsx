@@ -100,17 +100,9 @@ export default function ProductDetailPage() {
 
   // Build multi-angle image gallery from authentic product photography
   const baseImg = product.media?.[0]?.imageUrl || '/images/products/mithila-handpainted-tussar-silk-saree.jpeg';
-  const galleryImages = product.media && product.media.length > 1
+  const galleryImages = product.media && product.media.length > 0
     ? product.media.map((m) => m.imageUrl)
-    : [
-        baseImg,
-        isSaree 
-          ? '/images/products/mithila-haldi-yellow-tussar-saree.jpeg'
-          : 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85',
-        isSaree
-          ? '/images/products/mithila-indigo-tussar-silk-saree.jpeg'
-          : 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1200&q=85'
-      ];
+    : [baseImg];
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
@@ -192,21 +184,23 @@ export default function ProductDetailPage() {
           {/* LEFT: Multi-Angle Thumbnail Strip + Main Zoom Viewer (Cols 1-7) */}
           <div className="lg:col-span-7 flex flex-col-reverse md:flex-row gap-3 sm:gap-4 items-start lg:sticky lg:top-36 relative w-full">
             {/* Thumbnails */}
-            <div className="flex md:flex-col gap-2.5 sm:gap-3 overflow-x-auto md:overflow-visible pb-1 md:pb-0 w-full md:w-20 shrink-0 scrollbar-none">
-              {galleryImages.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedImageIdx(idx)}
-                  className={`relative w-16 h-20 md:w-20 md:h-24 rounded-lg overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
-                    selectedImageIdx === idx
-                      ? 'border-[#881337] shadow-md ring-2 ring-[#881337]/20 scale-102'
-                      : 'border-[#E8E1D7] hover:border-amber-400 opacity-70 hover:opacity-100'
-                  }`}
-                >
-                  <Image src={img} alt={`${product.title} angle ${idx + 1}`} fill className="object-cover" />
-                </button>
-              ))}
-            </div>
+            {galleryImages.length > 1 && (
+              <div className="flex md:flex-col gap-2.5 sm:gap-3 overflow-x-auto md:overflow-visible pb-1 md:pb-0 w-full md:w-20 shrink-0 scrollbar-none">
+                {galleryImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedImageIdx(idx)}
+                    className={`relative w-16 h-20 md:w-20 md:h-24 rounded-lg overflow-hidden border-2 transition-all cursor-pointer shrink-0 ${
+                      selectedImageIdx === idx
+                        ? 'border-[#881337] shadow-md ring-2 ring-[#881337]/20 scale-102'
+                        : 'border-[#E8E1D7] hover:border-amber-400 opacity-70 hover:opacity-100'
+                    }`}
+                  >
+                    <Image src={img} alt={`${product.title} angle ${idx + 1}`} fill className="object-cover" />
+                  </button>
+                ))}
+              </div>
+            )}
 
             {/* Main Interactive Magnifier Viewport */}
             <div className="relative flex-1 w-full aspect-[3/4] max-h-[68vh] sm:max-h-none bg-[#F5EFE6] border border-[#E8E1D7] rounded-xl overflow-hidden shadow-sm group">
