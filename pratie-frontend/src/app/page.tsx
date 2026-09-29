@@ -55,12 +55,12 @@ export default function HomePage() {
   // Filtered products for showcase
   const showcaseProducts = useMemo(() => {
     if (activeTab === 'saree') {
-      return products.filter((p) => p.clothingType === 'Saree').slice(0, 8);
+      return products.filter((p) => p.clothingType === 'Saree').slice(0, 16);
     }
     if (activeTab === 'suit') {
-      return products.filter((p) => p.clothingType === 'Suit').slice(0, 8);
+      return products.filter((p) => p.clothingType === 'Suit').slice(0, 16);
     }
-    return products.slice(0, 8);
+    return products.slice(0, 16);
   }, [products, activeTab]);
 
   // Regional breakdown counts

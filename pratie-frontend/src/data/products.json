@@ -1,5 +1,143 @@
 [
   {
+    "id": "p0000001-0000-0000-0000-000000000059",
+    "title": "Bengali Cotton Saree",
+    "slug": "bengali-cotton-saree",
+    "skuPrefix": "PRT-BEN-COT-59",
+    "shortDescription": "Handcrafted pure Bengali cotton saree in radiant coral-peach with traditional golden woven motifs and artisanal border.",
+    "description": "An authentic handloom masterpiece from West Bengal. Handcrafted from 100% fine breathable Bengal cotton in luminous coral-peach, woven with delicate circular buta motifs and an ornate woven pallu with rich golden borders.",
+    "categoryId": "c0000001-0000-0000-0000-000000000001",
+    "categoryName": "Cotton Sarees",
+    "brandId": "b0000001-0000-0000-0000-000000000001",
+    "brandName": "Pratiè Atelier",
+    "state": "West Bengal",
+    "clothingType": "Saree",
+    "craftTechnique": "Traditional Bengali Handloom Weave",
+    "fabric": "100% Pure Handwoven Bengal Cotton",
+    "basePricePaise": 2450000,
+    "compareAtPricePaise": 2950000,
+    "taxRatePercentage": 18,
+    "isFeatured": true,
+    "isPublished": true,
+    "isNewArrival": true,
+    "ratingAverage": 4.98,
+    "ratingCount": 18,
+    "tags": [
+      "saree",
+      "cotton-saree",
+      "bengali",
+      "bengal-cotton",
+      "handloom",
+      "coral-peach",
+      "traditional"
+    ],
+    "material": "100% Pure Bengal Cotton with Traditional Zari Motifs",
+    "careInstructions": "Gentle hand wash in cold water or dry clean",
+    "media": [
+      {
+        "id": "m59-1",
+        "productId": "p0000001-0000-0000-0000-000000000059",
+        "imageUrl": "/images/products/bengali-cotton-saree.jpeg",
+        "altText": "Bengali Cotton Saree - Front View",
+        "displayOrder": 1,
+        "isPrimary": true
+      },
+      {
+        "id": "m59-2",
+        "productId": "p0000001-0000-0000-0000-000000000059",
+        "imageUrl": "/images/products/bengali-cotton-saree-pallu.jpeg",
+        "altText": "Bengali Cotton Saree - Pallu & Detail View",
+        "displayOrder": 2,
+        "isPrimary": false
+      }
+    ],
+    "variants": [
+      {
+        "id": "v59-std",
+        "productId": "p0000001-0000-0000-0000-000000000059",
+        "sku": "PRT-BEN-COT-59-STD",
+        "size": "Standard (6.3m with Blouse Piece)",
+        "colorName": "Coral Peach & Golden Zari",
+        "colorHex": "#fb7185",
+        "additionalPricePaise": 0,
+        "stockQuantity": 9,
+        "isAvailable": true
+      }
+    ],
+    "createdAt": "2026-09-29T14:40:00Z",
+    "updatedAt": "2026-09-29T14:40:00Z"
+  },
+  {
+    "id": "p0000001-0000-0000-0000-000000000058",
+    "title": "Rani Pink Cotton Saree",
+    "slug": "rani-pink-cotton-saree-the-indian-edit",
+    "skuPrefix": "PRT-RAN-COT-58",
+    "shortDescription": "Regal Rani Pink pure cotton saree woven with radiant gold zari floral jaal and ceremonial temple border from The Indian Edit collection.",
+    "description": "An imperial festive masterpiece from The Indian Edit collection. Crafted in rich magenta Rani Pink pure breathable cotton, enveloped with intricate gold zari floral creepers across the drape and a majestic handwoven pallu with delicate tassels.",
+    "categoryId": "c0000001-0000-0000-0000-000000000004",
+    "categoryName": "The Indian Edit",
+    "collectionId": "col_the_indian_edit",
+    "brandId": "b0000001-0000-0000-0000-000000000001",
+    "brandName": "Pratiè Atelier",
+    "state": "",
+    "clothingType": "Saree",
+    "craftTechnique": "Handcrafted Cotton Print & Zari Accents",
+    "fabric": "100% Pure Handwoven Cotton",
+    "basePricePaise": 2850000,
+    "compareAtPricePaise": 3450000,
+    "taxRatePercentage": 18,
+    "isFeatured": true,
+    "isPublished": true,
+    "isNewArrival": true,
+    "ratingAverage": 4.97,
+    "ratingCount": 26,
+    "tags": [
+      "saree",
+      "cotton",
+      "cotton-saree",
+      "the-indian-edit",
+      "rani-pink",
+      "gold-zari",
+      "bridal",
+      "festive"
+    ],
+    "material": "100% Pure Breathable Cotton with Certified Gold Zari Weave",
+    "careInstructions": "Gentle hand wash separately in cold water or dry clean",
+    "media": [
+      {
+        "id": "m58-1",
+        "productId": "p0000001-0000-0000-0000-000000000058",
+        "imageUrl": "/images/products/rani-pink-gold-zari-silk-saree.jpeg",
+        "altText": "Rani Pink Cotton Saree - Front View",
+        "displayOrder": 1,
+        "isPrimary": true
+      },
+      {
+        "id": "m58-2",
+        "productId": "p0000001-0000-0000-0000-000000000058",
+        "imageUrl": "/images/products/rani-pink-gold-zari-silk-saree-back-view.jpeg",
+        "altText": "Rani Pink Cotton Saree - Draped Back View",
+        "displayOrder": 2,
+        "isPrimary": false
+      }
+    ],
+    "variants": [
+      {
+        "id": "v58-std",
+        "productId": "p0000001-0000-0000-0000-000000000058",
+        "sku": "PRT-RAN-COT-58-STD",
+        "size": "Standard (6.3m with Blouse Piece)",
+        "colorName": "Rani Pink & Antique Gold Zari",
+        "colorHex": "#be185d",
+        "additionalPricePaise": 0,
+        "stockQuantity": 7,
+        "isAvailable": true
+      }
+    ],
+    "createdAt": "2026-09-29T12:00:00Z",
+    "updatedAt": "2026-09-29T12:00:00Z"
+  },
+  {
     "id": "p0000001-0000-0000-0000-000000000001",
     "title": "Mithila Handpainted Tussar Silk Saree",
     "slug": "mithila-handpainted-tussar-silk-saree",

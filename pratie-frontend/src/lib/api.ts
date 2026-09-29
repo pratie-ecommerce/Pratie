@@ -12,9 +12,13 @@ export async function fetchProducts(params: Record<string, string> = {}): Promis
     const res = await fetch(`${API_BASE}/products?${query}`, { cache: 'no-store' });
     if (!res.ok) throw new Error('Network response not ok');
     const json = await res.json();
+    const backendProducts: Product[] = json.data?.products || [];
+    const backendSlugs = new Set(backendProducts.map((p) => p.slug));
+    const extraLocal = FALLBACK_PRODUCTS.filter((p) => !backendSlugs.has(p.slug));
+    const combined = [...extraLocal, ...backendProducts];
     return {
-      products: json.data.products,
-      total: json.data.meta.total
+      products: combined,
+      total: combined.length
     };
   } catch {
     let filtered = [...FALLBACK_PRODUCTS];
@@ -67,7 +71,9 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
           (p.id === 'p0000001-0000-0000-0000-000000000023' &&
             (slug === 'apatani-tribal-geometric-handloom-wrap-shawl' || slug === 'arunachal-mechuka-valley-handwoven-organic-eri-silk-saree')) ||
           (p.id === 'p0000001-0000-0000-0000-000000000022' &&
-            slug === 'machilipatnam-kalamkari-handblock-chanderi-silk-suit-set')
+            slug === 'machilipatnam-kalamkari-handblock-chanderi-silk-suit-set') ||
+          (p.id === 'p0000001-0000-0000-0000-000000000058' &&
+            (slug === 'rani-pink-gold-zari-silk-saree' || slug === 'rani-pink-cotton-saree-the-indian-edit'))
       ) || null
     );
   }

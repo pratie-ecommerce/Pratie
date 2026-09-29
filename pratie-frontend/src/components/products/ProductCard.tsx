@@ -89,6 +89,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <span>{product.state}</span>
               </span>
             )}
+            {product.categoryName === 'The Indian Edit' && (
+              <span className="bg-[#4a0d18] text-amber-300 border border-amber-400/40 text-[7.5px] sm:text-[8.5px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded shadow-xs">
+                The Indian Edit
+              </span>
+            )}
             {product.clothingType && (
               <span className="bg-white/95 text-slate-800 text-[7.5px] sm:text-[8.5px] font-bold uppercase px-1.5 py-0.5 rounded shadow-2xs border border-slate-200">
                 {product.clothingType}
